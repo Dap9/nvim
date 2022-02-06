@@ -3,6 +3,6 @@
 ## Plugins
 
 Currently using the following plugins:
-  Mundo
-  Fugitive
-  GitGutter
+ - Mundo
+ - Fugitive
+ - GitGutter
