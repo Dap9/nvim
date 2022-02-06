@@ -59,11 +59,12 @@ augroup configgroup
 augroup END
 
 " Setup directories for backup instead of having stupid .filname.swp files in the current directory
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set writebackup
+" Not needed for nvim, it defaults to '~/.local/share/nvim/swap/'
+"set backup
+"set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+"set backupskip=/tmp/*,/private/tmp/*
+"set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+"set writebackup
 
 " Plugins
 call plug#begin()
