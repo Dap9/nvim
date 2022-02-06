@@ -1,17 +1,10 @@
 " Mappings
 let mapleader="," 
 nnoremap <leader><space> :nohlsearch<CR> " Turns off search highlight when you press ',<space>'
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :MundoToggle<CR>
+nnoremap <leader>g :Git<space>
+" nnoremap <leader>a :Ack!<space>
 "doesnt work in neovim -> nmap <C-w>t :vert term<CR><C-w>R " Opens new terminal on the right. add 'rm -rf' for some fun
-
-" Setup a fuzzy search thing, idk wat its for -> remove if not used (included mapping here, but change to Mappings if used)
-nnoremap <leader>a :Ag<space>
-set runtimepath^=~/.vim/bundle/ag
-set runtimepath^=~/.vim/bundle/ctrlp.vim " Move to Plugins section once done testing
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Settings
 set number " If you dont use 1-3 download ram from https://www.bitcoin-mining-virus-here.com
@@ -58,6 +51,7 @@ set undodir=~/.nvim/undo
 highlight eCursor guifg=white guibg=white
 augroup configgroup
   autocmd!
+
   " reset cursor when vim exits
   autocmd VimLeave * set guicursor=a:ver90-eCursor
   autocmd BufEnter Makefile setlocal noexpandtab
@@ -75,9 +69,18 @@ set writebackup
 call plug#begin()
 
 Plug 'simnalamburt/vim-mundo'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+"Plug 'mileszs/ack.vim'
+"Plug 'ctrlpvim/ctrlp.vim' " -> idk what its doing, figure it out 1st lol
 
 call plug#end()
 
+" Setup a fuzzy search thing, idk wat its for -> remove if not used (included mapping here, but change to Mappings if used)
+"let g:ctrlp_match_window = 'bottom,order:ttb'
+"let g:ctrlp_switch_buffer = 0
+"let g:ctrlp_working_path_mode = 0
+"let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Setup cursor shapes & colors
 set termguicolors
