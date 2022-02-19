@@ -1,3 +1,5 @@
+set path+=**
+
 " Mappings
 let mapleader="," 
 nnoremap <leader><space> :nohlsearch<CR> " Turns off search highlight when you press ',<space>'
@@ -5,6 +7,18 @@ nnoremap <leader>u :MundoToggle<CR>
 nnoremap <leader>g :Git<space>
 " nnoremap <leader>a :Ack!<space>
 "doesnt work in neovim -> nmap <C-w>t :vert term<CR><C-w>R " Opens new terminal on the right. add 'rm -rf' for some fun
+tnoremap <A-h> <C-><C-N><C-w>h
+tnoremap <A-j> <C-><C-N><C-w>j
+tnoremap <A-k> <C-><C-N><C-w>k
+tnoremap <A-l> <C-><C-N><C-w>l
+inoremap <A-h> <C-w>h
+inoremap <A-j> <C-w>j
+inoremap <A-k> <C-w>k
+inoremap <A-l> <C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 " Settings
 set number " If you dont use 1-3 download ram from https://www.bitcoin-mining-virus-here.com
@@ -32,9 +46,9 @@ colorscheme radicalgoodspeed
 "set tabstop=2 " Set tabsize -> not needed since using softtabstop & expandtab
 set autoindent 
 set smartindent
-set shiftwidth=2
+set shiftwidth=4
 set expandtab " Expand tab to use spaces
-set softtabstop=2 " Number of spaces a tab counts for when editing. So this value is the number of spaces that is inserted when you hit <TAB> and also the number of spaces that are removed when you backspace
+set softtabstop=4 " Number of spaces a tab counts for when editing. So this value is the number of spaces that is inserted when you hit <TAB> and also the number of spaces that are removed when you backspace
 set cursorline "Underlines the line where cursor is at
 filetype plugin indent on
 set wildmenu "
@@ -47,6 +61,8 @@ set foldmethod=syntax   " fold based on syntax
 set foldlevelstart=10 " Higher -> more lines folded. Max val = 99, min = 0
 set undofile
 set undodir=~/.nvim/undo
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 highlight eCursor guifg=white guibg=white
 augroup configgroup
