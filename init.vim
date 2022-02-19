@@ -7,10 +7,10 @@ nnoremap <leader>u :MundoToggle<CR>
 nnoremap <leader>g :Git<space>
 " nnoremap <leader>a :Ack!<space>
 "doesnt work in neovim -> nmap <C-w>t :vert term<CR><C-w>R " Opens new terminal on the right. add 'rm -rf' for some fun
-tnoremap <A-h> <C-><C-N><C-w>h
-tnoremap <A-j> <C-><C-N><C-w>j
-tnoremap <A-k> <C-><C-N><C-w>k
-tnoremap <A-l> <C-><C-N><C-w>l
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
 inoremap <A-h> <C-w>h
 inoremap <A-j> <C-w>j
 inoremap <A-k> <C-w>k
@@ -19,6 +19,19 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+tnoremap <A-Left> <C-\><C-N><C-w>h
+tnoremap <A-Down> <C-\><C-N><C-w>j
+tnoremap <A-Up> <C-\><C-N><C-w>k
+tnoremap <A-Right> <C-\><C-N><C-w>l
+inoremap <A-Left> <C-w>h
+inoremap <A-Down> <C-w>j
+inoremap <A-Up> <C-w>k
+inoremap <A-Right> <C-w>l
+nnoremap <A-Left> <C-w>h
+nnoremap <A-Down> <C-w>j
+nnoremap <A-Up> <C-w>k
+nnoremap <A-Right> <C-w>l
 
 " Settings
 set number " If you dont use 1-3 download ram from https://www.bitcoin-mining-virus-here.com
