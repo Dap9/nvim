@@ -24,10 +24,6 @@ tnoremap <A-Left> <C-\><C-N><C-w>h
 tnoremap <A-Down> <C-\><C-N><C-w>j
 tnoremap <A-Up> <C-\><C-N><C-w>k
 tnoremap <A-Right> <C-\><C-N><C-w>l
-inoremap <A-Left> <C-w>h
-inoremap <A-Down> <C-w>j
-inoremap <A-Up> <C-w>k
-inoremap <A-Right> <C-w>l
 nnoremap <A-Left> <C-w>h
 nnoremap <A-Down> <C-w>j
 nnoremap <A-Up> <C-w>k
@@ -97,12 +93,27 @@ augroup END
 
 " Plugins
 call plug#begin()
-
-Plug 'simnalamburt/vim-mundo'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-"Plug 'mileszs/ack.vim'
-"Plug 'ctrlpvim/ctrlp.vim' " -> idk what its doing, figure it out 1st lol
+    
+    " Helps traverse undo tree
+    Plug 'simnalamburt/vim-mundo'
+    " Git wrapper for vim
+    Plug 'tpope/vim-fugitive'
+    " Adds modifications from git head to gutter
+    Plug 'airblade/vim-gitgutter'
+    
+    " Setup lsp
+    " lspconfig ->
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/nvim-lsp-installer'
+    Plug 'preservim/nerdcommenter'
+    let g:NERDCreateDefaultMappings = 1
+    let g:NERDCommentEmptyLines = 1
+    let g:NERDTrimTrailingWhitespace = 1
+    let g:NERDSpaceDelims = 1
+    "Plug 'mfussenegger/nvim-dap' "
+    "Plug 'ludovicchabant/vim-gutentags'
+    "Plug 'mileszs/ack.vim'
+    "Plug 'ctrlpvim/ctrlp.vim' " -> idk what its doing, figure it out 1st lol
 
 call plug#end()
 
