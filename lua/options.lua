@@ -3,11 +3,11 @@ vim.opt.number = true;
 vim.opt.syntax = 'ON';
 vim.opt.autoindent = true;
 vim.opt.smartindent = true;
-vim.opt.shiftwidth = 4;
+vim.opt.shiftwidth = 2;
 -- Expand tab to use spaces
 vim.opt.expandtab = true;
 -- Number of spaces a tab counts for when editing. So this value is the number of spaces that is inserted when you hit <TAB> and also the number of spaces that are removed when you backspace
-vim.opt.softtabstop = 4;
+vim.opt.softtabstop = 2;
 -- cursorline is local to window -> check with :h cursorline
 vim.opt.cursorline = true; -- vim.wo.cursorline = true;
 -- Change if this has a better option. didn't find any other for now
