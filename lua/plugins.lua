@@ -1,7 +1,7 @@
 -- Bootstraps packer to ensure its installed on 1st setup if packer hasnt already been installed
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+    Packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
 
@@ -52,7 +52,7 @@ local load = require('packer').startup(function(use)
         run = ':TSUpdate'
     }
 
-    if packer_bootstrap then
+    if Packer_bootstrap then
         require('packer').sync()
     end
 end)
@@ -67,15 +67,18 @@ vim.g.NERDSpaceDelims = 1;
 
 
 require('nvim-treesitter.configs').setup {
+    ensure_installed = { "c", "cpp", "lua", "rust", "python", "bash", "java" },
     -- ensure_installed = 'maintained', -> depretiated
     sync_install = false,
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = false,
+        additional_vim_regex_highlighting = true,
     },
+    indent = {
+      enable = true,
+      disable = {}
+    }
 }
-
-local lsp_installer = require "nvim-lsp-installer"
 
 -- Include the servers you want to have installed by default below
 local servers = {
@@ -85,16 +88,6 @@ local servers = {
     'sumneko_lua',
     'bashls'
 }
-
---[[
-   [ for _, name in pairs(servers) do
-   [   local server_is_found, server = lsp_installer.get_server(name)
-   [   if server_is_found and not server:is_installed() then
-   [     print("Installing " .. name)
-   [     server:install()
-   [   end
-   [ end
-   ]]
 
 require("nvim-lsp-installer").setup({
     ensure_installed = {
@@ -113,22 +106,6 @@ require("nvim-lsp-installer").setup({
         }
     }
 })
-
---[[
-   [ lsp_installer.on_server_ready(function(server)
-   [     local opts = {}
-   [ 
-   [     -- (optional) Customize the options passed to the server
-   [     -- if server.name == "tsserver" then
-   [     --     opts.root_dir = function() ... end
-   [     -- end
-   [ 
-   [     -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-   [     -- before passing it onwards to lspconfig.
-   [     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-   [     server:setup(opts)
-   [ end)
-   ]]
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()

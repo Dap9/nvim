@@ -12,7 +12,7 @@ Each section is added modularly with:
     cmds: autocmds and augroups
 
     plugins: plugin install + settings
-
+        NOTE: may contain some keybindings too since they are tied with plugins
 --]]
 
 require('options')

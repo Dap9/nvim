@@ -1,6 +1,6 @@
 vim.opt.path:append { '**' };
 vim.opt.number = true;
-vim.opt.syntax = 'ON';
+-- vim.opt.syntax = 'ON';
 vim.opt.autoindent = true;
 vim.opt.smartindent = true;
 vim.opt.shiftwidth = 2;
@@ -64,7 +64,9 @@ vim.cmd('colorscheme radicalgoodspeed')
 -- TODO: No nvim.api.nvim_set_hl() available yet. Should come with 0.7 so will move to them at that point 
 vim.opt.termguicolors = true;
 -- For normal mode
-vim.cmd([[highlight Cursor guifg=NONE guibg=red]]);
+vim.api.nvim_set_hl(0, "Cursor", { bg = "red" });
+-- vim.cmd([[highlight Cursor guifg=NONE guibg=red]]);
 -- For insert mode. Redundant for now but kept for clarity
-vim.cmd([[highlight iCursor guifg=NONE guibg=red]]);
+vim.api.nvim_set_hl(0, "iCursor", { bg = red });
+-- vim.cmd([[highlight iCursor guifg=NONE guibg=red]]);
 vim.opt.guicursor = [[a:blinkon0,n-v-c:block-Cursor,i-ci-ve:ver50-iCursor]];
