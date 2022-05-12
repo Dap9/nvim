@@ -49,10 +49,11 @@ Currently using the following plugins:
  - GitSigns
    - requires Plenary
  - NerdCommenter
- - Vim-Airline(-themes)
+ - Vim-Airline
+   - Vim-Airline(-themes)
  - LSP Config
- - nvim-lsp-installer
- - nvim-cmp
- - cmp-nvim-lsp
- - cmp_luasnip
- - LuaSnip
+   - nvim-lsp-installer
+   - nvim-cmp
+   - cmp-nvim-lsp
+   - cmp_luasnip
+   - LuaSnip
