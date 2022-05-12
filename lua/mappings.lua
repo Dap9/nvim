@@ -15,6 +15,8 @@ map('n', [[<leader>ga]], [[:Git<space>add<space>]])
 map('n', [[<leader>gc]], [[:Git<space>commit -m<space>"]])
 map('n', [[<leader>gg]], [[:Git log --graph --oneline --all --decorate<CR>]])
 
+-- NOTE: :Git log/status/graph does not have colors -> to fix
+
 -- Mappings for easier window navigation. A: Alt, C: ctrl
 map('t', [[<A-h>]], [[<C-\><C-n><C-w>h]])
 map('t', [[<A-j>]], [[<C-\><C-n><C-w>j]])
