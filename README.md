@@ -76,6 +76,8 @@
 
 ## Options
 
+Not bothered to put them all here. They are in `lua/options.lua` with explanations where I felt necessary.
+
 ## Plugins
 
 Plugins are managed with [`packer.nvim`](https://github.com/wbthomason/packer.nvim) -- also manages itself
