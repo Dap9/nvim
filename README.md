@@ -1,8 +1,9 @@
 # Setup for neovim
 
-## Mappings
+## Custom Mappings
+**NOTE: If you wish to enter the hovering window, do the keybinding for it one more time.**
 
-### Short forms / Expantions
+### Short forms / Expansions
 `<A-?>` -> `Alt + ?`
 
 `<C-?>` -> `Ctrl + ?`
@@ -43,7 +44,7 @@
  - `<leader>gg` -> show git graph
 
 ### LSP
-NOTE: These only work if an LSP server is running for the active buffer
+**NOTE: These only work if an LSP server is running for the active buffer. Also, most of these are the default ones that are in the LSP setup examples, but are technically 'custom' to my setup so I have put them here anyway**
 
  - `<space>e` -> show lsp diagnostics
  - `<space>q` -> show lsp diagnostic list
@@ -70,8 +71,8 @@ NOTE: These only work if an LSP server is running for the active buffer
  - `<C-Space>` -> complete item
  - `<C-e>` -> close autocomplete window
  - `<CR>` -> confirm suggested completion & replace
- - `<Tab>` -> select next item or expand/jump
- - `<S-Tab>` -> select previous item or jump back
+ - `<Tab>` -> select next item or expand/jump to next snippet
+ - `<S-Tab>` -> select previous item or jump back to previous snippet
 
 ## Options
 
@@ -79,7 +80,7 @@ NOTE: These only work if an LSP server is running for the active buffer
 
 Plugins are managed with [`packer.nvim`](https://github.com/wbthomason/packer.nvim) -- also manages itself
 
-Basic usage:
+### Basic usage of packer.nvim
 
 ```
 -- You must run this or `PackerSync` whenever you make changes to your plugin configuration
@@ -102,18 +103,17 @@ Basic usage:
 :PackerLoad optional-plugin-name(s)
 ```
 
-Currently using the following plugins:
- - Mundo
- - Fugitive
- - GitSigns
-   - requires Plenary
- - NerdCommenter
- - Vim-Airline
+### Plugins in use
+ - Mundo -> Undo tree navigator/visualizer
+ - Fugitive -> Git wrapper for (n)vim
+ - GitSigns -> Shows vim diff in gutter
+ - NerdCommenter -> Commenting shortcuts
+ - Vim-Airline -> Fancy status lines
    - Vim-Airline(-themes)
  - LSP Config
    - nvim-lsp-installer
    - nvim-cmp
    - cmp-nvim-lsp
-   - cmp_luasnip
+   - cmp\_luasnip
    - LuaSnip
- - TreeSitter
+ - TreeSitter -> For good code highlighting

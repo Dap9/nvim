@@ -120,11 +120,6 @@ _G.packer_plugins = {
     path = "/home/jtandon/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["plenary.nvim"] = {
-    loaded = true,
-    path = "/home/jtandon/.local/share/nvim/site/pack/packer/start/plenary.nvim",
-    url = "https://github.com/nvim-lua/plenary.nvim"
-  },
   ["vim-airline"] = {
     loaded = true,
     path = "/home/jtandon/.local/share/nvim/site/pack/packer/start/vim-airline",
