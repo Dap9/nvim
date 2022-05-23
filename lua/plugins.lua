@@ -52,20 +52,42 @@ local load = require('packer').startup(function(use)
     run = ':TSUpdate'
   }
 
+  -- Colorschemes I like
+  -- Feels too bright
+  -- use { 'Mofiqul/dracula.nvim', }
+  -- use { 'gosukiwi/vim-atom-dark', }
+  -- Seems to be bugged for treesitter, `return` is never highlighted
+  -- use { 'svjunic/RadicalGoodSpeed.vim', }
+  -- use { 'joshdick/onedark.vim', }
+  -- use { 'NLKNguyen/papercolor-theme', }
+  -- use { 'morhetz/gruvbox', }
+  -- use { 'bluz71/vim-moonfly-colors' }
+  --[[
+  ?? idk why this one is here, it just looks funny
+     use {
+       'vim-scripts/greenvision'
+     }
+   --]]
+  use { 'tomasr/molokai' }
+
   if Packer_bootstrap then
     require('packer').sync()
   end
 end)
 
+-- colorscheme setup in options
 
+-- airline config
 vim.g.airline_theme = 'minimalist'
 
+-- nerdcommenter config
 vim.g.NERDCreateDefaultMappings = 1;
 vim.g.NERDCommentEmptyLines = 1;
 vim.g.NerdTrimTrailingWhitespace = 1;
 vim.g.NERDSpaceDelims = 1;
 
 
+-- Treesitter
 require('nvim-treesitter.configs').setup {
   ensure_installed = { "c", "cpp", "lua", "rust", "python", "bash", "java" },
   -- ensure_installed = 'maintained', -> depretiated
@@ -80,6 +102,7 @@ require('nvim-treesitter.configs').setup {
   }
 }
 
+-- LSP settigs
 -- Include the servers you want to have installed by default below
 local servers = {
   'pyright',
@@ -90,13 +113,7 @@ local servers = {
 }
 
 require("nvim-lsp-installer").setup({
-  ensure_installed = {
-    'pyright',
-    'clangd',
-    'rust_analyzer',
-    'sumneko_lua',
-    'bashls'
-  },
+  ensure_installed = servers,
   automatic_installation = true,
   ui = {
     icons = {
@@ -198,5 +215,6 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
 
 return load;

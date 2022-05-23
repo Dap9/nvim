@@ -36,32 +36,36 @@ end
 -- Set leader
 vim.g.mapleader = ',';
 
---[[ 
+--[[
 Set colorscheme
 
-" Options for colorschemes:
-"   badwolf -> cant read some keywords with red cursor
-"   angr
-"   Atelier_CaveDark
-"   anotherdark
-"   basic-dark
-"   chocolate -> Insert mode is REALLY bad though
-"   codedark
-"   codeblocks_dark
-"   darkburn
-"   darkdevel -> cant read some keywords with red cursor
-"   despacio
-"   duotone-darkcave
-"   ego
-"   ir_black
-"   molokai_dark
-"   mint
-"   graywh
-"   radicalgoodspeed
+Options for colorschemes:
+  badwolf -> cant read some keywords with red cursor
+  angr
+  Atelier_CaveDark
+  anotherdark
+  basic-dark
+  chocolate -> Insert mode is REALLY bad though
+  codedark
+  codeblocks_dark
+  darkburn
+  darkdevel -> cant read some keywords with red cursor
+  despacio
+  duotone-darkcave
+  ego
+  ir_black
+  molokai_dark
+  mint
+  graywh
+  radicalgoodspeed
+  dracula
+  atom-dark
 
 --]]
 
-vim.cmd('colorscheme radicalgoodspeed')
+-- If using a colorscheme from a plugin, comment this & put it after the plugin loader
+--vim.cmd([[colorscheme dracula]])
+vim.cmd([[colorscheme molokai]])
 
 -- Cursor modification
 vim.opt.termguicolors = true;
