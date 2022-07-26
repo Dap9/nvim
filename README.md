@@ -1,3 +1,5 @@
+<!-- TODO: Use filetype.lua or any other features in https://gpanders.com/blog/whats-new-in-neovim-0-7/ that I havent already used -->
+
 # Setup for neovim
 
 ## Custom Mappings

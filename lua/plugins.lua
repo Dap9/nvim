@@ -38,7 +38,8 @@ local load = require('packer').startup(function(use)
   -- lsp
   use {
     'neovim/nvim-lspconfig',
-    'williamboman/nvim-lsp-installer',
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-nvim-lsp',
     'saadparwaiz1/cmp_luasnip',
@@ -112,9 +113,7 @@ local servers = {
   'bashls'
 }
 
-require("nvim-lsp-installer").setup({
-  ensure_installed = servers,
-  automatic_installation = true,
+require("mason").setup({
   ui = {
     icons = {
       server_installed = "✓",
@@ -123,6 +122,12 @@ require("nvim-lsp-installer").setup({
     }
   }
 })
+
+require("mason-lspconfig").setup({
+  ensure_installed = servers,
+  automatic_installation = true
+})
+
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
