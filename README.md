@@ -37,6 +37,7 @@
  - `<C-Right>` -> `vertical resize +2`
 
 ### Mundo
+Requires `pip install pynvim`
  - `<leader>u` -> toggle Mundo
 
 ### Vim-fugitive
