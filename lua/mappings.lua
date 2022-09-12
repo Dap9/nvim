@@ -20,7 +20,7 @@ map('n', [[,ff]], function() return require('telescope.builtin').find_files() en
 map('n', [[,fg]], function() return require('telescope.builtin').live_grep() end)
 map('n', [[,fb]], function() return require('telescope.builtin').buffers() end)
 map('n', [[,fs]], function() return require('telescope.builtin').grep_string() end)
-map('n', [[,m]], function() return require('telescope.builtin').man_pages() end)
+map('n', [[,m]], function() return require('telescope.builtin').man_pages({sections={"1","2","3"}}) end)
 map('n', [[,ss]], function() return require('telescope.builtin').spell_suggest() end)
 map('n', [[,fr]], function() return require('telescope.builtin').resume() end)
 map('n', [[,fp]], function() return require('telescope.builtin').registers() end)
