@@ -13,6 +13,7 @@ local load = require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   -- Helps traverse undo tree
+  -- REQUIRES pynvim
   use { 'simnalamburt/vim-mundo' }
 
   -- Git wrapper for vim
@@ -53,6 +54,12 @@ local load = require('packer').startup(function(use)
     run = ':TSUpdate'
   }
 
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    -- or                            , branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
   -- Colorschemes I like
   -- Feels too bright
   -- use { 'Mofiqul/dracula.nvim', }
@@ -63,6 +70,7 @@ local load = require('packer').startup(function(use)
   -- use { 'NLKNguyen/papercolor-theme', }
   -- use { 'morhetz/gruvbox', }
   -- use { 'bluz71/vim-moonfly-colors' }
+  -- use { 'catppuccin/nvim' }
   --[[
   ?? idk why this one is here, it just looks funny
      use {

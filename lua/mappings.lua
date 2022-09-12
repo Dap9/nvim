@@ -1,20 +1,29 @@
 local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true};
-    if opts and type(opts) == 'table' then
-        for k,v in pairs(opts) do options[k] = v end
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options);
+  local options = { noremap = true };
+  if opts and type(opts) == 'table' then
+    for k, v in pairs(opts) do options[k] = v end
+  end
+  vim.keymap.set(mode, lhs, rhs, options);
 end
 
 -- Mappings for plugins. REQUIRE plugins to work properly
 -- <leader> = ','
-map('n', [[<leader><space>]], [[:nohlsearch<CR>]], {silent = true})
-map('n', [[<leader>u]], [[:MundoToggle<CR>]], {silent = true})
+map('n', [[<leader><space>]], [[:nohlsearch<CR>]], { silent = true })
+map('n', [[<leader>u]], [[:MundoToggle<CR>]], { silent = true })
 map('n', [[<leader>g]], [[:Git<space>]])
 map('n', [[<leader>ga]], [[:Git<space>add<space>]])
 map('n', [[<leader>gc]], [[:Git<space>commit -m<space>"]])
 map('n', [[<leader>gg]], [[:Git log --graph --oneline --all --decorate<CR>]])
 
+-- Telescope mappings
+map('n', [[,ff]], function() return require('telescope.builtin').find_files() end)
+map('n', [[,fg]], function() return require('telescope.builtin').live_grep() end)
+map('n', [[,fb]], function() return require('telescope.builtin').buffers() end)
+map('n', [[,fs]], function() return require('telescope.builtin').grep_string() end)
+map('n', [[,m]], function() return require('telescope.builtin').man_pages() end)
+map('n', [[,ss]], function() return require('telescope.builtin').spell_suggest() end)
+map('n', [[,fr]], function() return require('telescope.builtin').resume() end)
+map('n', [[,fp]], function() return require('telescope.builtin').registers() end)
 -- NOTE: :Git log/status/graph does not have colors -> to fix
 
 -- Mappings for easier window navigation. A: Alt, C: ctrl
