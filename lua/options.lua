@@ -36,6 +36,8 @@ end
 -- Set leader
 vim.g.mapleader = ',';
 
+-- Set escape timeout (else waits for some time)
+-- vim.opt.ttimeoutlen = 0;
 --[[
 Set colorscheme
 
