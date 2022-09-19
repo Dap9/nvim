@@ -13,7 +13,7 @@ local load = require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   -- Helps traverse undo tree
-  -- REQUIRES pynvim
+  -- REQUIRES pynvim (pip)
   use { 'simnalamburt/vim-mundo' }
 
   -- Git wrapper for vim
@@ -54,6 +54,7 @@ local load = require('packer').startup(function(use)
     run = ':TSUpdate'
   }
 
+  -- REQUIRES: `ripgrep` (apt)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     -- or                            , branch = '0.1.x',
