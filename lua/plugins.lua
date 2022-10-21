@@ -1,13 +1,13 @@
 -- Bootstraps packer to ensure its installed on 1st setup if packer hasnt already been installed
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  Packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+  Packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
 end
 
 
 -- Needed to use packer as it is added by default as opt 1st time
 vim.cmd([[packadd packer.nvim]])
-
 local load = require('packer').startup(function(use)
   -- Allows packer to manage itself
   use { 'wbthomason/packer.nvim' }
@@ -31,10 +31,14 @@ local load = require('packer').startup(function(use)
   use { 'preservim/nerdcommenter' }
 
   -- Fancy status bar
-  use {
-    'vim-airline/vim-airline',
-    'vim-airline/vim-airline-themes'
-  }
+  --[[
+     [ use {
+     [   'vim-airline/vim-airline',
+     [   'vim-airline/vim-airline-themes'
+     [ }
+     ]]
+  use { "feline-nvim/feline.nvim" }
+  use { 'nvim-tree/nvim-web-devicons' }
 
   -- lsp
   use {
@@ -58,7 +62,7 @@ local load = require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
   -- Colorschemes I like
@@ -71,29 +75,37 @@ local load = require('packer').startup(function(use)
   -- use { 'NLKNguyen/papercolor-theme', }
   -- use { 'morhetz/gruvbox', }
   -- use { 'bluz71/vim-moonfly-colors' }
-  -- use { 'catppuccin/nvim' }
   --[[
   ?? idk why this one is here, it just looks funny
      use {
        'vim-scripts/greenvision'
      }
    --]]
-  use { 'tomasr/molokai' }
+  -- use { 'tomasr/molokai' }
+  use { 'catppuccin/nvim',
+    as = 'catppuccin',
+    config = function()
+      vim.g.catppuccin_flavour = 'mocha'
+      require("catppuccin").setup()
+    end
+  }
 
-  --[[
-     [ use { "anuvyklack/windows.nvim",
-     [  requires = {
-     [     "anuvyklack/middleclass",
-     [     "anuvyklack/animation.nvim"
-     [  },
-     [  config = function()
-     [     vim.o.winwidth = 10
-     [     vim.o.winminwidth = 10
-     [     vim.o.equalalways = false
-     [     require('windows').setup()
-     [  end
-     [ }
-     ]]
+  use { "anuvyklack/windows.nvim",
+    requires = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim"
+    },
+    config = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require('windows').setup({
+        autowidth = {
+          enable = false
+        }
+      })
+    end
+  }
 
   if Packer_bootstrap then
     require('packer').sync()
@@ -102,8 +114,16 @@ end)
 
 -- colorscheme setup in options
 
--- airline config
-vim.g.airline_theme = 'minimalist'
+-- airline config USING feline NOW
+-- vim.g.airline_theme = 'minimalist'
+-- Required to be enabled before calling setup()
+
+vim.o.termguicolors = true
+local ctp_feline = require('catppuccin.groups.integrations.feline')
+ctp_feline.setup({})
+require("feline").setup({
+  components = ctp_feline.get(),
+})
 
 -- nerdcommenter config
 vim.g.NERDCreateDefaultMappings = 1;
@@ -155,7 +175,7 @@ require("mason-lspconfig").setup({
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
@@ -182,7 +202,8 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl',
+    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
