@@ -86,7 +86,18 @@ local load = require('packer').startup(function(use)
     as = 'catppuccin',
     config = function()
       vim.g.catppuccin_flavour = 'mocha'
-      require("catppuccin").setup()
+      require("catppuccin").setup({
+        integrations = {
+          mason = true,
+        }
+        --[[
+           [ color_overrides = {
+           [   all = {
+           [     crust = "#000000",
+           [   },
+           [ }
+           ]]
+      })
     end
   }
 
@@ -120,7 +131,11 @@ end)
 
 vim.o.termguicolors = true
 local ctp_feline = require('catppuccin.groups.integrations.feline')
-ctp_feline.setup({})
+ctp_feline.setup({
+  sett = {
+    show_modified = true
+  }
+})
 require("feline").setup({
   components = ctp_feline.get(),
 })
