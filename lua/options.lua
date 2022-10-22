@@ -10,8 +10,8 @@ vim.opt.expandtab = true;
 -- So this value is the number of spaces that is inserted when you hit <TAB>
 -- and also the number of spaces that are removed when you backspace
 vim.o.softtabstop = 2;
--- Stop softtabstop of size 4. I don't like it, so i will not use it. fuck off rust.
-vim.g.rust_recommended_style = 0
+-- Stop softtabstop of size 4. I don't like it, so i will not use it. fuck off rust. Nvm, lsp formatting defaults to 4 spaces... Cant seem to fix that so leaving it at 4 spaces. Fuck it. TODO: FIGURE THIS SHIT OUT
+-- vim.g.rust_recommended_style = 0
 -- cursorline is local to window -> check with :h cursorline
 vim.opt.cursorline = true;  -- vim.wo.cursorline = true;
 -- Change if this has a better option. didn't find any other for now
