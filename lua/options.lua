@@ -10,7 +10,9 @@ vim.opt.expandtab = true;
 -- So this value is the number of spaces that is inserted when you hit <TAB>
 -- and also the number of spaces that are removed when you backspace
 vim.o.softtabstop = 2;
--- Stop softtabstop of size 4. I don't like it, so i will not use it. fuck off rust. Nvm, lsp formatting defaults to 4 spaces... Cant seem to fix that so leaving it at 4 spaces. Fuck it. TODO: FIGURE THIS SHIT OUT
+-- Stop softtabstop of size 4. I don't like it, so i will not use it. fuck off
+-- rust. Nvm, lsp formatting defaults to 4 spaces... Cant seem to fix that so
+-- leaving it at 4 spaces. Fuck it. TODO: FIGURE THIS SHIT OUT
 -- vim.g.rust_recommended_style = 0
 -- cursorline is local to window -> check with :h cursorline
 vim.opt.cursorline = true;  -- vim.wo.cursorline = true;
@@ -26,6 +28,7 @@ vim.opt.hlsearch = true;
 vim.opt.foldenable = true;
 vim.opt.foldmethod = 'syntax';
 vim.opt.foldlevelstart = 10;
+vim.opt.colorcolumn = "81"
 -- undofile is local to buffer -> check with :h undofile
 vim.opt.undofile = true;  -- vim.bo.undofile = true;
 vim.opt.undodir = os.getenv('HOME') .. '/.nvim/undo';
@@ -64,13 +67,18 @@ Options for colorschemes:
   radicalgoodspeed
   dracula
   atom-dark
+  oh-lucy
+  nordic
 
 --]]
 
--- If using a colorscheme from a plugin, comment this & put it after the plugin loader
+-- If using a colorscheme from a plugin, comment this & put it after the
+-- plugin loader
 --vim.cmd([[colorscheme dracula]])
-vim.cmd([[colorscheme catppuccin]])
-
+-- vim.cmd([[colorscheme catppuccin]])
+-- vim.cmd.colorscheme 'catppuccin'
+-- vim.opt.background = 'dark'
+vim.cmd.colorscheme 'oh-lucy'
 -- Cursor modification
 vim.opt.termguicolors = true;
 -- For normal mode

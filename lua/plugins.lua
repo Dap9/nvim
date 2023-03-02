@@ -1,8 +1,10 @@
--- Bootstraps packer to ensure its installed on 1st setup if packer hasnt already been installed
-local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+-- Bootstraps packer to ensure its installed on 1st setup if packer hasnt
+-- already been installed
+local install_path =
+    vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  Packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-    install_path })
+  Packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1',
+    'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
 
@@ -82,6 +84,10 @@ local load = require('packer').startup(function(use)
      }
    --]]
   -- use { 'tomasr/molokai' }
+  use { 'Yazeed1s/oh-lucy.nvim' }
+  use { 'AlexvZyl/nordic.nvim' }
+  use { 'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' } }
+  use { 'sam4llis/nvim-tundra' }
   use { 'catppuccin/nvim',
     as = 'catppuccin',
     config = function()
@@ -120,20 +126,28 @@ local load = require('packer').startup(function(use)
 
   use {
     'stevearc/aerial.nvim',
-    config = function() require('aerial').setup({
+    config = function()
+      require('aerial').setup({
         on_attach = function(bufnr)
           -- Toggle the aerial window with <leader>a
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle left<CR>', {})
+          vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a',
+            '<cmd>AerialToggle left<CR>', {})
           -- Jump forwards/backwards with '{' and '}'
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})
+          vim.api.nvim_buf_set_keymap(bufnr, 'n', '{',
+            '<cmd>AerialPrev<CR>', {})
+          vim.api.nvim_buf_set_keymap(bufnr, 'n', '}',
+            '<cmd>AerialNext<CR>', {})
           -- Jump up the tree with '[[' or ']]'
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
+          vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[',
+            '<cmd>AerialPrevUp<CR>', {})
+          vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]',
+            '<cmd>AerialNextUp<CR>', {})
         end
       })
     end
   }
+
+  use { "m4xshen/smartcolumn.nvim" }
 
   if Packer_bootstrap then
     require('packer').sync()
@@ -185,8 +199,9 @@ local servers = {
   'pyright',
   'clangd',
   'rust_analyzer',
-  'sumneko_lua',
-  'bashls'
+  'lua_ls',
+  'bashls',
+  'bufls'
 }
 
 require("mason").setup({
@@ -241,15 +256,22 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', [[<cmd>lua vim.lsp.buf.format()<CR>]], opts)
-
 end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+  if lsp == 'clangd' then
+    lspconfig[lsp].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    }
+  else
+    lspconfig[lsp].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+  end
 end
 
 -- luasnip setup
@@ -266,7 +288,7 @@ cmp.setup {
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs( -4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
@@ -286,8 +308,8 @@ cmp.setup {
     ['<S-Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif luasnip.jumpable( -1) then
+        luasnip.jump( -1)
       else
         fallback()
       end
@@ -298,6 +320,8 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+require('smartcolumn').setup()
 
 
 return load;
