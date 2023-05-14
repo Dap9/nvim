@@ -1,10 +1,17 @@
 local M = {
   {
+    'nvim-lua/lsp-status.nvim',
+    config = function()
+      require("lsp-status").register_progress()
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     event = 'BufReadPre',
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       'hrsh7th/cmp-nvim-lsp',
+      'nvim-lua/lsp-status.nvim',
     },
     config = function(_, _)
       local lsp_utils = require("plugins.lsp.lsp_utils")

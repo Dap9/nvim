@@ -45,11 +45,14 @@ M.mason_packages = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+local lsp_status = require("lsp-status")
+capabilities = vim.tbl_extend('keep', capabilities or {}, lsp_status.capabilities)
 M.capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 M.on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  lsp_status.on_attach(client)
 end
 
 return M
