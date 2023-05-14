@@ -15,7 +15,13 @@ Each section is added modularly with:
         NOTE: may contain some keybindings too since they are tied with plugins
 --]]
 
-require('plugins')
 require('options')
-require('mappings')
-require('cmds')
+require('plugin_manager')
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+        require("cmds")
+        require("mappings")
+    end,
+})

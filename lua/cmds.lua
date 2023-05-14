@@ -9,13 +9,10 @@ vim.api.nvim_create_autocmd(
   }
 );
 
--- Auto do PackerCompile after writing to plugins.lua
-vim.api.nvim_create_augroup("packer_user_config", {});
-vim.api.nvim_create_autocmd(
-  { "BufWritePost" },
-  {
-    pattern = "plugins.lua",
-    command = [[source <afile> | PackerCompile]],
-    group = "packer_user_config"
-  }
-);
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "gitcommit", "markdown" },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.spell = true
+	end,
+})
