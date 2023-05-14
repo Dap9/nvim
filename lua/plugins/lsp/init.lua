@@ -32,7 +32,39 @@ local M = {
             capabilities = capabilities_cpp,
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
           })
-        end
+        end,
+        ['lua_ls'] = function()
+          local lua_rtp = vim.split(package.path, ';')
+          table.insert(lua_rtp, 'lua/?.lua')
+          table.insert(lua_rtp, 'lua/?/init.lua')
+          lspconfig.lua_ls.setup({
+            on_attach = lsp_utils.on_attach,
+            capabilities = lsp_utils.capabilities,
+            settings = {
+              Lua = {
+                runtime = {
+                  -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                  version = 'LuaJIT',
+                  -- Setup your lua path
+                  path = lua_rtp,
+                },
+                diagnostics = {
+                  -- Get the language server to recognize the `vim` global
+                  globals = { 'vim' },
+                },
+                workspace = {
+                  -- Make the server aware of Neovim runtime files
+                  library = vim.api.nvim_get_runtime_file('', true),
+                  checkThirdParty = false,
+                },
+                -- Do not send telemetry data containing a randomized but unique identifier
+                telemetry = {
+                  enable = false,
+                },
+              },
+            },
+          })
+        end,
       })
     end
   },
@@ -54,17 +86,17 @@ local M = {
         local mr = require("mason-registry")
         local packages = lsp_utils.mason_packages
         local function ensure_installed()
-            for _, package in ipairs(packages) do
-                local p = mr.get_package(package)
-                if not p:is_installed() then
-                    p:install()
-                end
+          for _, package in ipairs(packages) do
+            local p = mr.get_package(package)
+            if not p:is_installed() then
+              p:install()
             end
+          end
         end
         if mr.refresh then
-            mr.refresh(ensure_installed)
+          mr.refresh(ensure_installed)
         else
-            ensure_installed()
+          ensure_installed()
         end
       end
     },

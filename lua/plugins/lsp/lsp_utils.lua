@@ -5,7 +5,7 @@ M.setup = function()
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.keymap.set('n', 'gD', '<cmd>Telescope lsp_declaration<CR>', opts)
-  vim.keymap.set('n', 'gd', '<cmd>Telescope vim_definition<CR>', opts)
+  vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
   vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementation<CR>', opts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
@@ -18,6 +18,9 @@ M.setup = function()
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
   vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
+  vim.keymap.set('x', '<leader>f', vim.lsp.buf.format, opts)
+  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+  vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 end
 
 M.servers = {
