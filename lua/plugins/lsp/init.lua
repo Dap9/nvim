@@ -1,9 +1,6 @@
 local M = {
   {
     'nvim-lua/lsp-status.nvim',
-    config = function()
-      require("lsp-status").register_progress()
-    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -14,6 +11,7 @@ local M = {
       'nvim-lua/lsp-status.nvim',
     },
     config = function(_, _)
+      require("lsp-status").register_progress()
       local lsp_utils = require("plugins.lsp.lsp_utils")
       local mason_lspconfig = require("mason-lspconfig")
       local lspconfig = require("lspconfig")

@@ -1,7 +1,7 @@
 local conditions = require("heirline.conditions")
 
 local Diagnostics = {
-  condition = function ()
+  condition = function()
     return conditions.has_diagnostics()
   end,
 
@@ -55,8 +55,9 @@ local Diagnostics = {
 }
 
 local LSPMessages = {
-    provider = require("lsp-status").status(),
-    hl = { fg = "gray" },
+  update = {  'DiagnosticChanged', 'BufEnter', },
+  provider = require("lsp-status").status_progress,
+  hl = { fg = "gray" },
 }
 
 local LspAttach = {
@@ -75,10 +76,10 @@ local LspInfo = {
   condition = conditions.lsp_attached,
   update = { 'LspAttach', 'LspDetach' },
   LspAttach,
-  LSPMessages,
 }
 
 return {
   Diagnostics,
   LspInfo,
+  LSPMessages,
 }

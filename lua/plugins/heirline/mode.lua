@@ -72,6 +72,7 @@ local ModeBlock = {
   -- control the padding and make sure our string is always at least 2
   -- characters long. Plus a nice Icon.
   provider = function(self)
+    if self.mode == "" or self.mode == nil then return '' end
     return " %-2(" .. self.mode_names[self.mode] .. "%) "
   end,
   -- Same goes for the highlight. Now the foreground will change according to the current mode.
@@ -81,6 +82,7 @@ local ModeBlock = {
   end,
   -- Re-evaluate the component only on ModeChanged event!
   -- Also allows the statusline to be re-evaluated when entering operator-pending mode
+  -- TODO: Seem to error when quitting neovim with a terminal of size less than 84x27
   update = {
     "ModeChanged",
     pattern = "*:*",
@@ -97,44 +99,44 @@ local ModeBlock = {
 }
 
 local SearchCount = {
-    condition = function()
-        return vim.v.hlsearch ~= 0 and vim.o.cmdheight == 0
-    end,
-    init = function(self)
-        local ok, search = pcall(vim.fn.searchcount)
-        if ok and search.total then
-            self.search = search
-        end
-    end,
-    provider = function(self)
-        local search = self.search
-        return string.format("[%d/%d]", search.current, math.min(search.total, search.maxcount))
-    end,
+  condition = function()
+    return vim.v.hlsearch ~= 0 and vim.o.cmdheight == 0
+  end,
+  init = function(self)
+    local ok, search = pcall(vim.fn.searchcount)
+    if ok and search.total then
+      self.search = search
+    end
+  end,
+  provider = function(self)
+    local search = self.search
+    return string.format("[%d/%d]", search.current, math.min(search.total, search.maxcount))
+  end,
 }
 
 local MacroRec = {
-    condition = function()
-        return vim.fn.reg_recording() ~= "" and vim.o.cmdheight == 0
+  condition = function()
+    return vim.fn.reg_recording() ~= "" and vim.o.cmdheight == 0
+  end,
+  provider = " ",
+  hl = { fg = "orange", bold = true },
+  utils.surround({ "[", "]" }, nil, {
+    provider = function()
+      return vim.fn.reg_recording()
     end,
-    provider = " ",
-    hl = { fg = "orange", bold = true },
-    utils.surround({ "[", "]" }, nil, {
-        provider = function()
-            return vim.fn.reg_recording()
-        end,
-        hl = { fg = "green", bold = true },
-    }),
-    update = {
-        "RecordingEnter",
-        "RecordingLeave",
-     }
+    hl = { fg = "green", bold = true },
+  }),
+  update = {
+    "RecordingEnter",
+    "RecordingLeave",
+  }
 }
 
 local ShowCmd = {
-    condition = function()
-        return vim.o.cmdheight == 0
-    end,
-    provider = ":%3.5(%S%)",
+  condition = function()
+    return vim.o.cmdheight == 0
+  end,
+  provider = ":%3.5(%S%)",
 }
 
-return utils.surround({"", "▏" }, "default_fg", { ModeBlock } )
+return utils.surround({ "", "" }, "default_fg", { ModeBlock })

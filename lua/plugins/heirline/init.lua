@@ -9,7 +9,6 @@ local M = {
 
     require("lsp-status").register_progress()
 
-    local utils = require("plugins.heirline.utils")
     local color = require("plugins.heirline.colors")
     color.setup()
 
@@ -22,9 +21,14 @@ local M = {
 
     local lsp_info = require("plugins.heirline.lsp-info")
 
+    -- local Align = { provider = "%=" }
+    local Space = { provider = " " }
+
     local StatusLine = {
       vi_mode,
+      Space,
       filename,
+      Space,
       git_info,
       lsp_info,
       pos,

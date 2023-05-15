@@ -1,5 +1,3 @@
-local utils = require("plugins.heirline.utils")
-
 local M = {}
 local h_utils = require("heirline.utils")
 
@@ -15,6 +13,7 @@ local function setup_colors()
     diag_hint = h_utils.get_highlight("DiagnosticSignHint").fg,
     default_bg = h_utils.get_highlight("LineNr").bg,
     default_fg = h_utils.get_highlight("LineNr").fg,
+    dir = h_utils.get_highlight("Directory").fg,
   }
 end
 
