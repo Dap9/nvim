@@ -65,6 +65,30 @@ local M = {
             },
           })
         end,
+        ['rust_analyzer'] = function()
+          lspconfig.rust_analyzer.setup({
+            on_attach = lsp_utils.on_attach,
+            capabilities = lsp_utils.capabilities,
+            settings = {
+              ["rust-analyzer"] = {
+                  imports = {
+                      granularity = {
+                          group = "module",
+                      },
+                      prefix = "self",
+                  },
+                  cargo = {
+                      buildScripts = {
+                          enable = true,
+                      },
+                  },
+                  procMacro = {
+                      enable = true
+                  },
+              }
+          }
+          })
+        end,
       })
     end
   },
