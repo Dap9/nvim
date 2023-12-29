@@ -1,26 +1,24 @@
 local M = {
   'nvim-treesitter/nvim-treesitter',
-  dependencies = {
-    "HiPhish/nvim-ts-rainbow2",
-  },
+  -- dependencies = {
+  --   "HiPhish/nvim-ts-rainbow2",
+  -- },
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
   opts = {
     ensure_installed = { "c", "cpp", "lua", "rust", "python", "bash", "java" },
-    -- ensure_installed = 'maintained', -> depretiated
     sync_install = false,
     highlight = {
       enable = true,
       -- additional_vim_regex_highlighting = true,
     },
-    rainbow = {
-      enable = true,
-      -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-      -- Which query to use for finding delimiters
-      query = 'rainbow-parens',
-      -- Highlight the entire buffer all at once
-      strategy = require('ts-rainbow').strategy.global,
-    },
+    -- rainbow = {
+    --   enable = true,
+    --   -- Which query to use for finding delimiters
+    --   query = 'rainbow-parens',
+    --   -- Highlight the entire buffer all at once
+    --   strategy = require('ts-rainbow').strategy.global,
+    -- },
     indent = {
       enable = true,
       disable = {}

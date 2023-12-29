@@ -30,6 +30,7 @@ M.servers = {
   'lua_ls',
   'bashls',
   'bufls',
+  -- 'java_language_server',
 }
 
 -- Look at https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
@@ -41,6 +42,7 @@ M.mason_packages = {
   'lua-language-server',
   'bash-language-server',
   'buf-language-server',
+  -- 'java-language-server',
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

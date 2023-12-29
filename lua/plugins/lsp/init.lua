@@ -71,22 +71,22 @@ local M = {
             capabilities = lsp_utils.capabilities,
             settings = {
               ["rust-analyzer"] = {
-                  imports = {
-                      granularity = {
-                          group = "module",
-                      },
-                      prefix = "self",
+                imports = {
+                  granularity = {
+                    group = "module",
                   },
-                  cargo = {
-                      buildScripts = {
-                          enable = true,
-                      },
+                  prefix = "self",
+                },
+                cargo = {
+                  buildScripts = {
+                    enable = true,
                   },
-                  procMacro = {
-                      enable = true
-                  },
+                },
+                procMacro = {
+                  enable = true
+                },
               }
-          }
+            }
           })
         end,
       })
