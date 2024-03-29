@@ -30,6 +30,7 @@ M.servers = {
   'lua_ls',
   'bashls',
   'bufls',
+  'gopls',
   -- 'java_language_server',
 }
 
@@ -42,6 +43,7 @@ M.mason_packages = {
   'lua-language-server',
   'bash-language-server',
   'buf-language-server',
+  'gopls',
   -- 'java-language-server',
 }
 
