@@ -1,0 +1,7 @@
+gcc
+build-essential
+cmake
+unzip
+curl
+gettext
+ninja-build
