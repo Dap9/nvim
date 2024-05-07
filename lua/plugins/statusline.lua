@@ -6,10 +6,11 @@ local M = {
   event = 'VeryLazy',
   opts = {
     options = {
+      theme = "catppuccin",
     },
   },
   config = function(_, opts)
-    require('lualine').setup()
+    require('lualine').setup(opts.options)
   end
 }
 

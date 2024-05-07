@@ -31,6 +31,7 @@ M.servers = {
   'bashls',
   'bufls',
   'gopls',
+  'neocmake',
   -- 'java_language_server',
 }
 
@@ -44,6 +45,7 @@ M.mason_packages = {
   'bash-language-server',
   'buf-language-server',
   'gopls',
+  'cmakelang',
   -- 'java-language-server',
 }
 
