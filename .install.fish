@@ -9,7 +9,7 @@ function __install -d "Install neovim"
 
   set -l save_status $status
   # Restore dir
-  if test $PWD -ne /tmp/nvim
+  if test $PWD != /tmp/nvim
     return $save_status
   end
   popd

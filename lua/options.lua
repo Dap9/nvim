@@ -1,5 +1,7 @@
 vim.opt.path:append { '**' };
 vim.opt.number = true;
+vim.opt.relativenumber = true
+vim.opt.signcolumn = "number"
 -- vim.opt.syntax = 'ON';
 vim.opt.autoindent = true;
 vim.opt.smartindent = true;
