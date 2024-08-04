@@ -13,5 +13,7 @@ function __install -d "Install neovim"
     return $save_status
   end
   popd
+
+  mamba install -y pynvim
   return $save_status
 end
