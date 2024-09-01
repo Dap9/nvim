@@ -110,7 +110,7 @@ local M = {
       },
     },
     config = function(_, opts)
-      local flavor = 'mocha_purple'
+      local flavor = 'gruvbox'
       if flavor ~= nil then
         local overrides = require('plugins.colorscheme_customization.catppuccin')[flavor]
         opts.color_overrides = overrides.color_overrides
