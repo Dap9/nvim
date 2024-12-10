@@ -1,3 +1,5 @@
+-- TODO: doesn't launch on a new file
+
 local M = {
   {
     "neovim/nvim-lspconfig",
@@ -86,6 +88,17 @@ local M = {
                   enable = true
                 },
               }
+            }
+          })
+        end,
+        ['gopls'] = function()
+          lspconfig.gopls.setup({
+            settings = {
+              -- gopls = {
+                -- doesn't seem to be respected...
+                -- indentStyle = "space",
+                -- tabWidth = 2,
+              -- }
             }
           })
         end,

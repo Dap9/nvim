@@ -57,9 +57,9 @@ local M = {
         end),
       }),
       sources = {
-        { name = "nvim_lsp" },
-        { name = "path" },
-        { name = "buffer" },
+        { name = "nvim_lsp", keyword_length = 4 },
+        { name = "path", keyword_length = 4 },
+        { name = "buffer", keyword_length = 2 },
       },
       window = {
         completion = cmp.config.window.bordered(),

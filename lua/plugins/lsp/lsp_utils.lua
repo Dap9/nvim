@@ -30,7 +30,7 @@ M.servers = {
   'rust_analyzer',
   'lua_ls',
   'bashls',
-  'bufls',
+  'buf_ls',
   'gopls',
   'neocmake',
   -- 'java_language_server',
