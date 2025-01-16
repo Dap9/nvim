@@ -71,16 +71,9 @@ vim.o.incsearch = true;
 -- on by default, but kept for consistency across machines if using a differrent
 -- version of neovim or smth, tho how that would break other parts of the config
 -- idk so might not even make sense to be here tbh
+-- foldmethod & foldexpr are set in the treesitter config, since the expr is only
+-- possible to be used when treesitter is loaded
 vim.o.foldenable = true;
-
--- The kind of folding used for the current window.  Possible values:
--- |fold-manual|	manual	    Folds are created manually.
--- |fold-indent|	indent	    Lines with equal indent form a fold.
--- |fold-expr|	expr	    'foldexpr' gives the fold level of a line.
--- |fold-marker|	marker	    Markers are used to specify folds.
--- |fold-syntax|	syntax	    Syntax highlighting items specify folds.
--- |fold-diff|	diff	    Fold text that is not changed.
-vim.o.foldmethod = 'expr';
 
 -- When on, Vim automatically saves undo history to an undo file when
 -- writing a buffer to a file, and restores undo history from the same
