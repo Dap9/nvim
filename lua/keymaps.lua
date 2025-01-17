@@ -1,6 +1,6 @@
 local utils = require('utils')
-utils.map({'n'}, [[<leader><space>]], [[:nohlsearch<CR>]], { silent = true })
 
+utils.map({'n'}, [[<leader><space>]], [[:nohlsearch<CR>]], { silent = true })
 
 utils.map({'t'}, [[<A-h>]], [[<C-\><C-n><C-w>h]])
 utils.map({'t'}, [[<A-j>]], [[<C-\><C-n><C-w>j]])
