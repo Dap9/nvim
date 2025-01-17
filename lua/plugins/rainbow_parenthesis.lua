@@ -5,7 +5,7 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
   },
   event = {
-    "BufReadPre",
+    "BufReadPost",
     "BufNewFile",
     "VeryLazy",
   },
