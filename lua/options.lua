@@ -82,3 +82,5 @@ vim.o.undofile = true;
 vim.opt.undodir = os.getenv('HOME') .. '/.nvim/undo';
 
 vim.o.termguicolors = true;
+
+vim.g.colorscheme = "tokyonight";
