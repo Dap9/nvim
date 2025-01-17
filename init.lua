@@ -22,12 +22,12 @@ Each section is added modularly with:
 --  By default options should go here
 require("options")
 
--- Sets up the plugin manager to install & setup plugins
-require("config.lazy")
-
 -- These **should not** depend on a plugin. Plugin specific keymaps should
 -- be set in the conf for the plugin.
 require("keymaps")
+
+-- Sets up the plugin manager to install & setup plugins
+require("config.lazy")
 
 vim.api.nvim_create_autocmd("User", {
   -- Assuming that the `lazy.nvim` plugin manager is installed.

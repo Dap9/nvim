@@ -23,8 +23,10 @@ utils.map({'n'}, [[<C-Left>]], [[:vertical resize -2<CR>]])
 utils.map({'n'}, [[<C-Right>]], [[:vertical resize +2<CR>]])
 
 -- The regular mappings for movement are all based on 'tmux.nvim'. They should
--- overwrite these once the plugins load
-utils.map({'i', 'n'}, [[<A-h>]],[[<C-w>h]])
-utils.map({'i', 'n'}, [[<A-j>]],[[<C-w>j]])
-utils.map({'i', 'n'}, [[<A-k>]],[[<C-w>k]])
-utils.map({'i', 'n'}, [[<A-l>]],[[<C-w>l]])
+-- overwrite these once the plugins load.
+-- In this case, lazy.nvim will overwrite these to allow lazy loading of 'tmux.nvim'
+-- on these keys
+utils.map({'n'}, [[<A-h>]],[[<C-w>h]])
+utils.map({'n'}, [[<A-j>]],[[<C-w>j]])
+utils.map({'n'}, [[<A-k>]],[[<C-w>k]])
+utils.map({'n'}, [[<A-l>]],[[<C-w>l]])
