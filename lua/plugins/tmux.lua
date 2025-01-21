@@ -1,3 +1,4 @@
+-- Integrate for easier movement with tmux
 local M = {
   "aserowy/tmux.nvim",
   -- https://unix.stackexchange.com/questions/10689/how-can-i-tell-if-im-in-a-tmux-session-from-a-bash-script
