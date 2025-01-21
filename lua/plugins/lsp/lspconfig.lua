@@ -51,13 +51,14 @@ local M = {
   },
 
   config = function(_, opts)
-    local config = require("plugins.lsp.config");
     local mason_lspconfig = require("mason-lspconfig");
 
     local servers = opts.servers;
 
     -- get all the servers that are available through mason-lspconfig
-    all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package);
+    local all_mslp_servers = vim.tbl_keys(
+      require("mason-lspconfig.mappings.server").lspconfig_to_package
+    );
 
     local capabilities = vim.tbl_deep_extend(
       "force",
@@ -95,6 +96,7 @@ local M = {
     for server, server_opts in pairs(servers) do
       if server_opts then
         server_opts = server_opts == true and {} or server_opts
+	-- default: true (as nil != false)
         if server_opts.enabled ~= false then
           -- run manual setup if mason=false or if this is a server that cannot
           -- be installed with mason-lspconfig
