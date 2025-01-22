@@ -19,6 +19,9 @@ local M = {
       underline = true,
       virtual_text = {
 	source = "if_many",
+	severity = {
+	  min = vim.diagnostic.severity.ERROR,
+	},
       },
       -- signs = {},
       -- float = {},
@@ -51,6 +54,7 @@ local M = {
   },
 
   config = function(_, opts)
+    vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
     local mason_lspconfig = require("mason-lspconfig");
 
     local servers = opts.servers;
