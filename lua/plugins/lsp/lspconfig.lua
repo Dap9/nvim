@@ -82,7 +82,7 @@ local M = {
       );
 
       if server_opts.enabled == false then
-        return;
+        return
       end
 
       if opts.setup[server] then
