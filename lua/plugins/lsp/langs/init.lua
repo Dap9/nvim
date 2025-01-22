@@ -4,6 +4,7 @@ local M = {
   require("plugins.lsp.langs.golang"),
   require("plugins.lsp.langs.rust"),
   require("plugins.lsp.langs.cpp"),
+  require("plugins.lsp.langs.js"),
 }
 
 return M
