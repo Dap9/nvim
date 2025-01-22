@@ -12,10 +12,6 @@ Note that |vim.opt| returns an `Option` object, not the value of the option,
 which is accessed through |vim.opt:get()|
 --]]
 
--- Expand tab to use spaces however Makefiles **require** tabs. Else they error
--- out. Set it here if it isn't auto done with `filetype indent on`
-vim.bo.expandtab = vim.bo.filetype ~= "make"
-
 -- Number of spaces a tab counts for when editing.
 -- So this value is the number of spaces that is inserted when you hit <TAB>
 -- and also the number of spaces that are removed when you backspace
