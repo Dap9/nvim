@@ -55,6 +55,8 @@ local M = {
 
   config = function(_, opts)
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
+    vim.lsp.inlay_hint.enable(opts.inlay_hints.enabled);
+
     local mason_lspconfig = require("mason-lspconfig");
 
     local servers = opts.servers;
