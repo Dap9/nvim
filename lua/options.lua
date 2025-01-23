@@ -14,6 +14,8 @@ which is accessed through |vim.opt:get()|
 
 vim.g.mapleader = ',';
 
+vim.g.colorscheme = "tokyonight";
+
 -- Allows vim to search recursively in subdirectories.
 -- This is primarily to allow it to find files in subdirectories
 vim.opt.path:append { '**' };
@@ -86,5 +88,3 @@ vim.o.termguicolors = true;
 -- Expand tab to use spaces however Makefiles **require** tabs. Else they error
 -- out. Set it here if it isn't auto done with `filetype indent on`
 vim.bo.expandtab = vim.bo.filetype ~= "make"
-
-vim.g.colorscheme = "tokyonight";
