@@ -87,19 +87,4 @@ vim.o.termguicolors = true;
 -- out. Set it here if it isn't auto done with `filetype indent on`
 vim.bo.expandtab = vim.bo.filetype ~= "make"
 
--- The blow are set twice due to weird behaviors:
--- 1. Some lsps 'reset' shiftwidth & softtabstop. Thus need them in `options_override'
--- 2. Some lsps expect(?) the shiftwidth & softtabstop to be set prior to loading it so it 
---    defaults to setting them to shiftwidth = 8 which is objectively bad, whether you like
---    4 spaces or 2 cos no sane person like 8 spaces
---
--- Number of spaces a tab counts for when editing.
--- So this value is the number of spaces that is inserted when you hit <TAB>
--- and also the number of spaces that are removed when you backspace
-vim.o.softtabstop = 2
-
--- Number of spaces to use for each step of (auto)indent.  Used for
--- |'cindent'|, |>>|, |<<|, etc.
-vim.o.shiftwidth = 2
-
 vim.g.colorscheme = "tokyonight";
