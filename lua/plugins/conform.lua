@@ -12,7 +12,6 @@ local M = {
       function()
         require("conform").format({ async = true })
       end,
-      mode = "",
       desc = "Format buffer",
     },
   },
@@ -21,8 +20,7 @@ local M = {
   ---@type conform.setupOpts
   opts = {
     -- Define your formatters (extended in lang/.*\.lua files
-    formatters_by_ft = {
-    },
+    formatters_by_ft = {},
     -- Set default options
     default_format_opts = {
       lsp_format = "fallback",
