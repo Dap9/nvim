@@ -12,6 +12,7 @@ local M = {
       function()
         require("conform").format({ async = true })
       end,
+      mode = {"n", "v"},
       desc = "Format buffer",
     },
   },
