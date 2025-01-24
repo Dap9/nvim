@@ -45,7 +45,7 @@ local M = {
       opts.formatters_by_ft = opts.formatters_by_ft or {}
       for _, ft in ipairs(supported) do
         opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
-        -- TODO: Below has a warning, but it works. Why? No idea.
+	---@diagnostic disable-next-line: param-type-mismatch
         table.insert(opts.formatters_by_ft[ft], "prettier")
       end
     end,
