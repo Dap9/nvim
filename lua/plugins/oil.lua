@@ -1,13 +1,15 @@
 -- View & modify directories like a vim buffer
 local M = {
-  'stevearc/oil.nvim',
-  -- lazy loading isn't possible since it needs to register a new file type
-  -- from what i can tell & this messes with it
+  "stevearc/oil.nvim",
+  -- https://github.com/stevearc/oil.nvim/issues/300
+  -- Close enough
+  cmd = "Oil",
+  event = { "VimEnter */*,.*", "BufNew */*,.*" },
 
-  ---@module 'oil'
+  ---@module "oil"
   ---@type oil.SetupOpts
+  opts = {},
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = true,
 }
 
 return M
