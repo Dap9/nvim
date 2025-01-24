@@ -19,6 +19,11 @@ M.on_attach = function()
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
   vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
   vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+  -- Not really using these tbh. Keeping them anyway in case i use them for some lsps
+  vim.keymap.set('n', [[<leader>cda]], vim.lsp.codelens.refresh, opts)
+  vim.keymap.set('n', [[<leader>cdr]], vim.lsp.codelens.run, opts)
+  vim.keymap.set('n', [[<leader>cdc]], vim.lsp.codelens.clear, opts)
 end
 
 return M

@@ -24,9 +24,6 @@ local M = {
   },
   {
     "stevearc/conform.nvim",
-    dependencies = {
-    "williamboman/mason.nvim",
-    },
     ---@module "conform"
     ---@type conform.setupOpts
     opts = {

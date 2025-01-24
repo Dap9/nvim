@@ -31,6 +31,11 @@ local M = {
     inlay_hints = {
       enabled = true,
     },
+    -- Codelens allows displays of contextual info. E.g. show number of references,
+    -- run a test in the source code
+    codelens = {
+      enabled = true,
+    },
 
     -- Any global capabilities can be put here
     capabilities = {},
