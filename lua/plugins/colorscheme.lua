@@ -1,9 +1,8 @@
 local M = {
   {
     "rebelot/kanagawa.nvim",
-    lazy = false,
+    lazy = vim.g.colorscheme ~= "kanagawa",
     priority = 1000,
-    cond = vim.g.colorscheme == "kanagawa",
     opts = {
       -- Only used when `background` is not set
       theme = "dragon",
@@ -22,7 +21,7 @@ local M = {
 
   {
     "folke/tokyonight.nvim",
-    lazy = false,
+    lazy = vim.g.colorscheme ~= "tokyonight",
     priority = 1000,
     cond = vim.g.colorscheme == "tokyonight",
     opts = {
@@ -38,9 +37,8 @@ local M = {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = false,
+    lazy = vim.g.colorscheme ~= "catppuccin",
     priority = 1000,
-    cond = vim.g.colorscheme == "catppuccin",
     opts = {
       flavor = "auto",
       background = {
