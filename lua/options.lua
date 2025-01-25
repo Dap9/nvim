@@ -81,7 +81,7 @@ vim.o.foldenable = true;
 -- writing a buffer to a file, and restores undo history from the same
 -- file on buffer read.
 vim.o.undofile = true;
-vim.opt.undodir = os.getenv('HOME') .. '/.nvim/undo';
+vim.opt.undodir = (os.getenv('HOME') or os.getenv("USERPROFILE")) .. '/.nvim/undo';
 
 vim.o.termguicolors = true;
 
