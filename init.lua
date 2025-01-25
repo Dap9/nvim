@@ -20,11 +20,11 @@ Each section is added modularly with:
 --  2. options that might be overridden by plugins.
 --
 --  By default options should go here
-require("options")
+require("config.options")
 
 -- These **should not** depend on a plugin. Plugin specific keymaps should
 -- be set in the conf for the plugin.
-require("keymaps")
+require("config.keymaps")
 
 -- Sets up the plugin manager to install & setup plugins
 require("config.lazy")
@@ -35,11 +35,11 @@ vim.api.nvim_create_autocmd("User", {
   -- from the 'event' trigger directly, but can't do much about it for now
   pattern = "VeryLazy",
   callback = function()
-    require("autocmds")
+    require("config.autocmds")
 
     -- Override some options that might be set by a plugin.
     -- E.g. some lsps might set `softtabstop` and `shiftwidth`
     -- This will ensure that doesn't happen
-    require("options_overrides")
+    require("config.options_overrides")
   end
 })
