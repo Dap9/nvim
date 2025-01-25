@@ -27,6 +27,7 @@ local M = {
       "cmake",
       "javascript",
       "typescript",
+      "tsx",
       "go",
       "fish",
       "markdown",
@@ -42,6 +43,10 @@ local M = {
       "dockerfile",
       "sql",
       "starlark",
+      "verilog",
+      "objdump",
+      "asm",
+      "arduino",
     },
     sync_install = false,
     highlight = {
