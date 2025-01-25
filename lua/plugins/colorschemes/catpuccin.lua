@@ -1,7 +1,9 @@
+local name = "catppuccin";
+
 local M = {
   "catppuccin/nvim",
-  name = "catppuccin",
-  lazy = vim.g.colorscheme ~= "catppuccin",
+  name = name,
+  lazy = vim.g.colorscheme ~= name,
   priority = 1000,
   opts = {
     flavor = "auto",
@@ -37,10 +39,9 @@ local M = {
     },
   },
 
-  config = function(_, opts)
-    require("catppuccin").setup(opts)
-    vim.cmd.colorscheme([[catppuccin]])
-  end,
+  config = function (_, opts)
+    require("utils").setup_colorscheme(name, opts);
+  end
 }
 
 return M

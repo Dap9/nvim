@@ -1,16 +1,16 @@
+local name = "tokyonight";
+
 local M = {
   "folke/tokyonight.nvim",
-  lazy = vim.g.colorscheme ~= "tokyonight",
+  lazy = vim.g.colorscheme ~= name,
   priority = 1000,
-  cond = vim.g.colorscheme == "tokyonight",
   opts = {
     style = "night",
   },
 
-  config = function(_, opts)
-    require("tokyonight").setup(opts)
-    vim.cmd.colorscheme([[tokyonight]])
-  end,
+  config = function (_, opts)
+    require("utils").setup_colorscheme(name, opts);
+  end
 }
 
 return M

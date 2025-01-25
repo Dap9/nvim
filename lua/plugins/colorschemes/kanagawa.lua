@@ -1,6 +1,8 @@
+local name = "kanagawa";
+
 local M = {
   "rebelot/kanagawa.nvim",
-  lazy = vim.g.colorscheme ~= "kanagawa",
+  lazy = vim.g.colorscheme ~= name,
   priority = 1000,
   opts = {
     -- Only used when `background` is not set
@@ -12,10 +14,9 @@ local M = {
     dimInactive = "true",
   },
 
-  config = function(_, opts)
-    require("kanagawa").setup(opts)
-    vim.cmd.colorscheme([[kanagawa]])
-  end,
+  config = function (_, opts)
+    require("utils").setup_colorscheme(name, opts);
+  end
 }
 
 return M
