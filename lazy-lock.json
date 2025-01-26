@@ -14,6 +14,7 @@
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
   "nekonight": { "branch": "main", "commit": "df1c6af5e1df601232a2c0fc7198ea1342e95f29" },
   "neogit": { "branch": "master", "commit": "63124cf520ff24d09deb3b850e053908ab0fc66a" },
+  "nightfox.nvim": { "branch": "main", "commit": "595ffb8f291fc4a9bef3201a28b7c0379a41cdee" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "39142aa1390d6ccdca57cb6dc5b2c7bfed460ffe" },
   "nvim-lspconfig": { "branch": "master", "commit": "b4d65bce97795438ab6e1974b3672c17a4865e3c" },
   "nvim-treesitter": { "branch": "master", "commit": "f3d7c0dafcbc86c4d63f765649c884a03bc1360a" },
@@ -23,6 +24,7 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "85b80abaa09cbbc039e3095b2f515b3cf8cadd11" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "tmux.nvim": { "branch": "main", "commit": "307bad95a1274f7288aaee09694c25c8cbcd6f1a" },
+  "tokyodark.nvim": { "branch": "master", "commit": "cc70a2fb809d5376f2bd8e5836f9bb3f5fb8ef43" },
   "tokyonight.nvim": { "branch": "main", "commit": "c3ab53c3f544e4a04f2a05d43451fd9bedff51b4" },
   "vim-mundo": { "branch": "master", "commit": "2ceda8c65f7b3f9066820729fc02003a09df91f9" }
 }

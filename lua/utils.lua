@@ -10,9 +10,9 @@ function M.map(modes, lhs, rhs, opts)
   end
 end
 
-function M.setup_colorscheme(name, opts)
+function M.setup_colorscheme(name, opts, style)
   require(name).setup(opts);
-  vim.cmd.colorscheme(name);
+  vim.cmd.colorscheme(style or name);
 end
 
 return M
