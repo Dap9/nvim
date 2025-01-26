@@ -2,7 +2,6 @@ local name = "ayu"
 
 local M = {
   "Shatur/neovim-ayu",
-  name = name,
   lazy = vim.g.colorscheme ~= name,
   priority = 1000,
   opts = {},
