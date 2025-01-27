@@ -47,6 +47,10 @@ local M = {
       "objdump",
       "asm",
       "arduino",
+      "gitignore",
+      "gitcommit",
+      "make",
+      "gdscript",
     },
     sync_install = false,
     highlight = {
