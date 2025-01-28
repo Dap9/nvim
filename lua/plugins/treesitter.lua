@@ -90,7 +90,9 @@ local M = {
     -- |fold-diff|	diff	    Fold text that is not changed.
     vim.o.foldmethod = 'expr';
 
-    vim.o.foldexpr = [[v:lua.vim.treesitter.fodexpr()]];
+    -- https://www.reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
+    vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()";
+    -- vim.o.foldtext = "v:lua.vim.treesitter.foldtext()";
   end,
 }
 

@@ -77,6 +77,9 @@ vim.o.incsearch = true;
 -- possible to be used when treesitter is loaded
 vim.o.foldenable = true;
 
+-- By default don't close any folds
+vim.o.foldlevelstart = 99
+
 -- When on, Vim automatically saves undo history to an undo file when
 -- writing a buffer to a file, and restores undo history from the same
 -- file on buffer read.
