@@ -98,4 +98,4 @@ local vimode = {
   },
 }
 
-return utils.surround({ "█", " " }, "bright_bg", vimode)
+return utils.surround({ "█", " " }, "vimode_bg", vimode)

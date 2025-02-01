@@ -12,6 +12,7 @@ local M = {
   },
   config = function (_, opts)
     require("utils").setup_colorscheme(name, opts);
+    vim.g.colorscheme = name
   end
 }
 
