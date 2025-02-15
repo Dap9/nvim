@@ -1,5 +1,5 @@
 local M = {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   init = function(plugin)
@@ -59,17 +59,17 @@ local M = {
     },
     indent = {
       enable = true,
-      disable = {}
+      disable = {},
     },
     incremental_selection = {
       enable = true,
       keymaps = {
         init_selection = "<A-t>",
         node_incremental = "<A-t>",
-        scope_incremental = false,
+        scope_incremental = "<A-s>",
         node_decremental = "<bs>",
       },
-    }
+    },
     -- disable = function(lang, buf)
     --   local max_filesize = 100 * 1024 -- 100 KB, prevent parsing on extrememly big files
     --   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
@@ -77,6 +77,7 @@ local M = {
     --     return true
     --   end
     -- end,
+    auto_install = true,
   },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
@@ -88,10 +89,10 @@ local M = {
     -- |fold-marker|	marker	    Markers are used to specify folds.
     -- |fold-syntax|	syntax	    Syntax highlighting items specify folds.
     -- |fold-diff|	diff	    Fold text that is not changed.
-    vim.o.foldmethod = 'expr';
+    vim.o.foldmethod = "expr"
 
     -- https://www.reddit.com/r/neovim/comments/16xz3q9/treesitter_highlighted_folds_are_now_in_neovim/
-    vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()";
+    vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     -- vim.o.foldtext = "v:lua.vim.treesitter.foldtext()";
   end,
 }
