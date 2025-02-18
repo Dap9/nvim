@@ -2,10 +2,10 @@
 -- Move to https://github.com/mbbill/undotree ?
 
 local M = {
-  'simnalamburt/vim-mundo',
+  "simnalamburt/vim-mundo",
   enabled = false,
   keys = {
-    { "<leader>u", "<cmd>MundoToggle<cr>", {silent = true, noremap = true}},
+    { "<leader>u", "<cmd>MundoToggle<cr>", { silent = true, noremap = true } },
   },
   cmd = "Mundo",
 }

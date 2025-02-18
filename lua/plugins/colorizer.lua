@@ -1,13 +1,13 @@
 -- Colorize hex values, rgb values, color names -> e.g. red
 local M = {
-  'NvChad/nvim-colorizer.lua',
+  "NvChad/nvim-colorizer.lua",
   keys = {
-    {[[<leader>ci]], [[<cmd>ColorizerToggle<cr>]]},
+    { [[<leader>ci]], [[<cmd>ColorizerToggle<cr>]] },
   },
   cmd = {
     "ColorizerToggle",
   },
-  main = 'colorizer',
+  main = "colorizer",
   config = true,
 }
 

@@ -29,7 +29,7 @@ local M = {
       -- statuscolumn = require("plugins.statusline.statuscolumn"),
 
       opts = {
-	colors = require("plugins.heirline.utils").setup_colors(),
+        colors = require("plugins.heirline.utils").setup_colors(),
       },
     }
   end,

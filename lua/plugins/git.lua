@@ -17,8 +17,7 @@ local M = {
 
     "nvim-telescope/telescope.nvim",
   },
-  opts = {
-  }
+  opts = {},
 }
 
 return M
