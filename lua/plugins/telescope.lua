@@ -11,7 +11,6 @@ local M = {
         });
       end
     },
-    { [[,fg]], function() return require('telescope.builtin').live_grep() end },
     { [[,fb]], function() return require('telescope.builtin').buffers() end },
     { [[,fs]], function() return require('telescope.builtin').grep_string() end },
     { [[,m]],  function() return require('telescope.builtin').man_pages({ sections = { "1", "2", "3" } }) end },
