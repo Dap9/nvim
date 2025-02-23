@@ -1,4 +1,4 @@
-local name = "nekonight";
+local name = "nekonight"
 
 local M = {
   "BrunoCiccarino/nekonight",
@@ -10,10 +10,18 @@ local M = {
   opts = {
     style = "night",
   },
-  config = function (_, opts)
-    require("utils").setup_colorscheme(name, opts);
+  config = function(_, opts)
+    require("utils").setup_colorscheme(name, opts)
     vim.g.colorscheme = name
-  end
+  end,
 }
+
+function M.setup_colors()
+  -- local colors = require("tokyodark").colors
+
+  return vim.tbl_deep_extend("force", {}, {
+    vimode_bg = "black",
+  })
+end
 
 return M

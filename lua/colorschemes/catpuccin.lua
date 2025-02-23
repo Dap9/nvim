@@ -45,4 +45,12 @@ local M = {
   end
 }
 
+function M.setup_colors()
+  -- local colors = require("tokyodark").colors
+
+  return vim.tbl_deep_extend("force", {}, {
+    vimode_bg = "black",
+  })
+end
+
 return M
