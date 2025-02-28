@@ -7,6 +7,9 @@ local M = {
     "DiffviewOpen",
     "DiffviewFileHistory",
   },
+  keys = {
+    { "<leader>dc", function(tabpage) require("diffview").close(tabpage) end }
+  },
   opts = {
     view = {
       merge_tool = {
