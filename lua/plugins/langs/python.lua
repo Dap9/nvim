@@ -34,6 +34,10 @@ local M = {
           "ruff_organize_imports",
         },
       },
+      formatters = {
+        ruff = {
+        }
+      }
     },
   },
 }
