@@ -7,9 +7,6 @@ local M = {
         nushell = {
           mason = false,
           on_attach = require("plugins.lsp.config").on_attach,
-          -- TODO: Use a separate lsp for protobufs? I remember it was quite bad
-          -- filetypes = function ()
-          -- end
           setup = function ()
             require("lspconfig").nushell.setup({})
           end
