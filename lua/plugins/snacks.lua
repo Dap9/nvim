@@ -17,10 +17,10 @@ local M = {
       enabled = true,
       ---@class snacks.picker.previewers.Config
       previewers = {
-        diff = {
-          builtin = false,
-          cmd = { "delta" },
-        },
+        -- diff = {
+        --   builtin = false,
+        --   cmd = { "delta" },
+        -- },
       },
       layout = {
         cycle = true,
