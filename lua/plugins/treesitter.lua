@@ -51,6 +51,7 @@ local M = {
       "gitcommit",
       "make",
       "gdscript",
+      "regex",
     },
     sync_install = false,
     highlight = {
