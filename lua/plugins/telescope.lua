@@ -52,4 +52,4 @@ local M = {
   cmd = "Telescope",
 }
 
-return M
+return {}

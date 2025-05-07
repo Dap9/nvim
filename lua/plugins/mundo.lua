@@ -10,4 +10,4 @@ local M = {
   cmd = "Mundo",
 }
 
-return M
+return {}

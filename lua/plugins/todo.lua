@@ -18,4 +18,4 @@ local M = {
   },
 }
 
-return M
+return {}

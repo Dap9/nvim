@@ -7,10 +7,10 @@ local M = {
     bigfile = { enabled = true },
     dashboard = { enabled = true },
     explorer = { enabled = false },
-    indent = { enabled = true },
-    input = { enabled = true },
+    indent = { enabled = false },
+    input = { enabled = false },
     notifier = {
-      enabled = true,
+      enabled = false,
       timeout = 3000,
     },
     picker = {
@@ -528,6 +528,8 @@ local M = {
     },
   },
   init = function()
+    -- Temp job -> just don't setup anything to try minimize impact when on remote
+    return
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
       callback = function()
