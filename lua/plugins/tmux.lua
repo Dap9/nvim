@@ -40,4 +40,4 @@ local M = {
   },
 }
 
-return {}
+return M
