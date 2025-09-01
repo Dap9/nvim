@@ -10,15 +10,10 @@ local M = {
           on_attach = function(client, _)
             client.server_capabilities.hoverProvider = false
           end,
+          cmd = {
+            "uv run ruff server"
+          }
         },
-      },
-    },
-  },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "ruff",
       },
     },
   },

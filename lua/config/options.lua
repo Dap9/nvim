@@ -100,3 +100,6 @@ vim.o.softtabstop = 2
 -- Number of spaces to use for each step of (auto)indent.  Used for
 -- |'cindent'|, |>>|, |<<|, etc.
 vim.o.shiftwidth = 2
+
+-- For 'go to file' to work properly on sw
+vim.opt.path:append "/project/sw/jayant/sw"

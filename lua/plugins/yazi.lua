@@ -11,7 +11,7 @@ local M = {
     },
     {
       -- Open in the current working directory
-      "<leader>cw",
+      "<leader>y",
       "<cmd>Yazi cwd<cr>",
       desc = "Open the file manager in nvim's working directory",
     },
@@ -31,4 +31,4 @@ local M = {
   },
 }
 
-return {}
+return M
