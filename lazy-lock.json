@@ -36,5 +36,5 @@
   "tokyodark.nvim": { "branch": "master", "commit": "cc70a2fb809d5376f2bd8e5836f9bb3f5fb8ef43" },
   "tokyonight.nvim": { "branch": "main", "commit": "14fd5ff7f84027064724ec3157fe903199e77ded" },
   "vim-mundo": { "branch": "master", "commit": "2ceda8c65f7b3f9066820729fc02003a09df91f9" },
-  "yazi.nvim": { "branch": "main", "commit": "4561da5c81900212a425a40cf5385679dd8e61c1" }
+  "yazi.nvim": { "branch": "main", "commit": "64c325d08884c6c85e6ab1f61a064544640806f1" }
 }
