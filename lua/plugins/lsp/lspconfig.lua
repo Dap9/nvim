@@ -41,14 +41,13 @@ local M = {
     capabilities = {},
 
     -- LSP Server Settings
-    ---@module "lspconfig"
-    ---@type lspconfig.options
+    ---@type table<string, vim.lsp.Config|boolean>
     servers = {},
 
     -- you can do any additional lsp server setup here
     -- return true if you don't want this server to be setup with lspconfig
     ---@module "lspconfig"
-    ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+    ---@type table<string, fun(server:string, opts: vim.lsp.Config):boolean?>
     setup = {
       -- example to setup with typescript.nvim
       -- tsserver = function(_, opts)
@@ -60,7 +59,7 @@ local M = {
     },
   },
 
-  config = function(_, opts)
+  config = vim.schedule_wrap(function(_, opts)
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
     vim.lsp.inlay_hint.enable(opts.inlay_hints.enabled)
 
@@ -70,32 +69,36 @@ local M = {
 
     -- get all the servers that are available through mason-lspconfig
     local all_mslp_servers = vim.tbl_keys(require("mason-lspconfig").get_mappings().lspconfig_to_package)
+    local mason_exclude = {}
 
-    local capabilities = vim.tbl_deep_extend(
-      "force",
-      {},
-      vim.lsp.protocol.make_client_capabilities(),
-      require("blink.cmp").get_lsp_capabilities() or {},
-      opts.capabilities or {}
-    )
+    local capabilities =
+      vim.tbl_deep_extend("force", {}, require("blink.cmp").get_lsp_capabilities() or {}, opts.capabilities or {})
 
-    local setup = function(server)
-      local server_opts = vim.tbl_deep_extend("force", vim.deepcopy(capabilities), servers[server] or {})
+    vim.lsp.config("*", { capabilities = capabilities })
+
+    ---@return boolean? exclude automatic setup
+    local function setup(server)
+      local server_opts = servers[server]
+      server_opts = server_opts == true and {} or (not server_opts) and { enabled = false } or server_opts
 
       if server_opts.enabled == false then
+        mason_exclude[#mason_exclude + 1] = server
         return
       end
 
-      if opts.setup[server] then
+      local use_mason = server_opts.mason ~= false and vim.tbl_contains(all_mslp_servers, server)
+      local setup = opts.setup[server] or opts.setup["*"]
+      if setup and setup(server, server_opts) then
         if opts.setup[server](server, server_opts) then
-          return
+          mason_exclude[#mason_exclude + 1] = server
         end
-      elseif opts.setup["*"] then
-        if opts.setup["*"](server, server_opts) then
-          return
+      else
+        vim.lsp.config(server, server_opts)
+        if not use_mason then
+          vim.lsp.enable(server)
         end
       end
-      require("lspconfig")[server].setup(server_opts)
+      return use_mason
     end
 
     local ensure_installed = {} ---@type string[]
@@ -116,14 +119,12 @@ local M = {
       end
     end
 
+    local install = vim.tbl_filter(setup, vim.tbl_keys(opts.servers))
     mason_lspconfig.setup({
-      ensure_installed = ensure_installed,
-      automatic_installation = true,
-      handlers = {
-        setup,
-      },
+      ensure_installed = install,
+      automatic_enable = { exclude = mason_exclude },
     })
-  end,
+  end),
 }
 
 return M
