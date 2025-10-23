@@ -21,8 +21,14 @@ local M = {
     -- See the full "keymap" documentation for information on defining your own keymap.
     keymap = {
       preset = "default",
-      ['<C-j>'] = { "select_next", "fallback" },
-      ['<C-k>'] = { "select_prev", "fallback" },
+      ["<C-j>"] = { "select_next", "fallback" },
+      ["<C-k>"] = { "select_prev", "fallback" },
+      ["<C-s>"] = { "show", "show_signature", "hide_signature", "fallback" },
+      ["<C-d>"] = { "show_documentation", "hide_documentation", "fallback" },
+      ["<C-f>"] = { "scroll_signature_down", "scroll_documentation_down", "fallback" },
+      ["<C-b>"] = { "scroll_signature_up", "scroll_documentation_up", "fallback" },
+      ["<C-e>"] = { "cancel", "fallback" },
+      ["<C-space>"] = { "hide", "fallback"},
     },
 
     completion = {
@@ -37,9 +43,6 @@ local M = {
           },
         },
       },
-      -- ghost_text = {
-      --   enabled = true,
-      -- },
     },
 
     appearance = {
