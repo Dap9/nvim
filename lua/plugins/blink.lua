@@ -28,7 +28,7 @@ local M = {
       ["<C-f>"] = { "scroll_signature_down", "scroll_documentation_down", "fallback" },
       ["<C-b>"] = { "scroll_signature_up", "scroll_documentation_up", "fallback" },
       ["<C-e>"] = { "cancel", "fallback" },
-      ["<C-space>"] = { "hide", "fallback"},
+      ["<C-space>"] = { "hide", "fallback" },
     },
 
     completion = {
