@@ -8,7 +8,7 @@ local M = {
   dependencies = {
     "williamboman/mason.nvim",
     -- LazyVim does this. Not sure why
-    { "williamboman/mason-lspconfig.nvim", config = function() end },
+    { "mason-org/mason-lspconfig.nvim", config = function() end },
     "saghen/blink.cmp",
   },
 
@@ -68,7 +68,7 @@ local M = {
     local servers = opts.servers
 
     -- get all the servers that are available through mason-lspconfig
-    local all_mslp_servers = vim.tbl_keys(require("mason-lspconfig").get_mappings().lspconfig_to_package)
+    local all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings").get_mason_map().lspconfig_to_package)
     local mason_exclude = {}
 
     local capabilities =
@@ -77,7 +77,7 @@ local M = {
     vim.lsp.config("*", { capabilities = capabilities })
 
     ---@return boolean? exclude automatic setup
-    local function setup(server)
+    local function configure(server)
       local server_opts = servers[server]
       server_opts = server_opts == true and {} or (not server_opts) and { enabled = false } or server_opts
 
@@ -89,9 +89,7 @@ local M = {
       local use_mason = server_opts.mason ~= false and vim.tbl_contains(all_mslp_servers, server)
       local setup = opts.setup[server] or opts.setup["*"]
       if setup and setup(server, server_opts) then
-        if opts.setup[server](server, server_opts) then
-          mason_exclude[#mason_exclude + 1] = server
-        end
+        mason_exclude[#mason_exclude + 1] = server
       else
         vim.lsp.config(server, server_opts)
         if not use_mason then
@@ -101,25 +99,7 @@ local M = {
       return use_mason
     end
 
-    local ensure_installed = {} ---@type string[]
-
-    for server, server_opts in pairs(servers) do
-      if server_opts then
-        server_opts = server_opts == true and {} or server_opts
-        -- default: true (as nil != false)
-        if server_opts.enabled ~= false then
-          -- run manual setup if mason=false or if this is a server that cannot
-          -- be installed with mason-lspconfig
-          if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
-            setup(server)
-          else
-            ensure_installed[#ensure_installed + 1] = server
-          end
-        end
-      end
-    end
-
-    local install = vim.tbl_filter(setup, vim.tbl_keys(opts.servers))
+    local install = vim.tbl_filter(configure, vim.tbl_keys(opts.servers))
     mason_lspconfig.setup({
       ensure_installed = install,
       automatic_enable = { exclude = mason_exclude },
