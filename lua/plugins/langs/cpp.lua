@@ -6,8 +6,9 @@ local M = {
         -- https://clangd.llvm.org/config
         clangd = {
           mason = false,
-          filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
           on_attach = require("plugins.lsp.config").on_attach,
+          -- This is horrible for proto files... We use a separate lsp and formatter for it
+          filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
         },
       },
     },
