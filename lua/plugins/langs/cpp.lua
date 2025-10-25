@@ -6,9 +6,8 @@ local M = {
         -- https://clangd.llvm.org/config
         clangd = {
           on_attach = require("plugins.lsp.config").on_attach,
-          -- TODO: Use a separate lsp for protobufs? I remember it was quite bad
-          -- filetypes = function ()
-          -- end
+          -- This is horrible for proto files... We use a separate lsp and formatter for it
+          filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
         },
       },
     },
