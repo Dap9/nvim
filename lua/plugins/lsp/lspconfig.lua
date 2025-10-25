@@ -69,7 +69,10 @@ local M = {
 
     -- get all the servers that are available through mason-lspconfig
     local all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings").get_mason_map().lspconfig_to_package)
-    local mason_exclude = {}
+
+    -- Explicitly set ones we want to automatically enable.
+    -- Prefer this opt-in approach since mason-lspconfig will just enable things that aren't opted out in case the name doesn't match (looking at you buf)
+    local mason_enable = {}
 
     local capabilities =
       vim.tbl_deep_extend("force", {}, require("blink.cmp").get_lsp_capabilities() or {}, opts.capabilities or {})
@@ -82,27 +85,29 @@ local M = {
       server_opts = server_opts == true and {} or (not server_opts) and { enabled = false } or server_opts
 
       if server_opts.enabled == false then
-        mason_exclude[#mason_exclude + 1] = server
         return
       end
 
-      local use_mason = server_opts.mason ~= false and vim.tbl_contains(all_mslp_servers, server)
       local setup = opts.setup[server] or opts.setup["*"]
       if setup and setup(server, server_opts) then
-        mason_exclude[#mason_exclude + 1] = server
-      else
-        vim.lsp.config(server, server_opts)
-        if not use_mason then
-          vim.lsp.enable(server)
-        end
+        return
       end
-      return use_mason
+
+      vim.lsp.config(server, server_opts)
+
+      local use_mason = server_opts.mason ~= false and vim.tbl_contains(all_mslp_servers, server)
+      if use_mason then
+        mason_enable[#mason_enable + 1] = server
+        return true
+      end
+
+      vim.lsp.enable(server)
     end
 
     local install = vim.tbl_filter(configure, vim.tbl_keys(opts.servers))
     mason_lspconfig.setup({
       ensure_installed = install,
-      automatic_enable = { exclude = mason_exclude },
+      automatic_enable = mason_enable,
     })
   end),
 }
