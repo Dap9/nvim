@@ -12,30 +12,30 @@ Note that |vim.opt| returns an `Option` object, not the value of the option,
 which is accessed through |vim.opt:get()|
 --]]
 
-vim.g.mapleader = ',';
+vim.g.mapleader = ","
 
-vim.g.colorscheme = "tokyonight";
+vim.g.colorscheme = "tokyonight"
 
 -- Allows vim to search recursively in subdirectories.
 -- This is primarily to allow it to find files in subdirectories
-vim.opt.path:append { '**' };
-vim.o.number = true;
-vim.o.relativenumber = true;
+vim.opt.path:append({ "**" })
+vim.o.number = true
+vim.o.relativenumber = true
 
 -- Smart indenting
-vim.o.autoindent = true;
-vim.o.smartindent = true;
+vim.o.autoindent = true
+vim.o.smartindent = true
 
 -- Highlight the text line of the cursor with CursorLine
-vim.o.cursorline = true;
+vim.o.cursorline = true
 
 -- Seems to be on by default?
 -- vim.cmd("filetype plugin indent on");
 
 -- On pressing 'wildchar' (usually <Tab>) to invoke completion, the possible
 -- matches are shown.
-vim.o.wildmenu = true;
-vim.opt.wildignore:append {
+vim.o.wildmenu = true
+vim.opt.wildignore:append({
   "*.docx",
   "*.jpg",
   "*.png",
@@ -47,9 +47,8 @@ vim.opt.wildignore:append {
   "*.img",
   "*.xlsx",
   "*DS_STORE",
-  "*.db"
-};
-
+  "*.db",
+})
 
 -- Only meant to be set temporarily when performing an operation that might
 -- cause a slowdown. Thus set if needed, but not currently set
@@ -58,24 +57,24 @@ vim.opt.wildignore:append {
 -- When a bracket is inserted, briefly jump to the matching one.  The
 -- jump is only done if the match can be seen on the screen.  The time to
 -- show the match can be set with 'matchtime'.
-vim.o.showmatch = true;
+vim.o.showmatch = true
 
 -- When there is a previous search pattern, highlight all its matches.
-vim.o.hlsearch = true;
+vim.o.hlsearch = true
 
 -- While typing a search command, show where the pattern, as it was typed
 -- so far, matches.  The matched string is highlighted.  If the pattern
 -- is invalid or not found, nothing is shown.  The screen will be updated
 -- often, this is only useful on fast terminals.
 -- turn off if slow
-vim.o.incsearch = true;
+vim.o.incsearch = true
 
 -- on by default, but kept for consistency across machines if using a differrent
 -- version of neovim or smth, tho how that would break other parts of the config
 -- idk so might not even make sense to be here tbh
 -- foldmethod & foldexpr are set in the treesitter config, since the expr is only
 -- possible to be used when treesitter is loaded
-vim.o.foldenable = true;
+vim.o.foldenable = true
 
 -- By default don't close any folds
 vim.o.foldlevelstart = 99
@@ -83,10 +82,10 @@ vim.o.foldlevelstart = 99
 -- When on, Vim automatically saves undo history to an undo file when
 -- writing a buffer to a file, and restores undo history from the same
 -- file on buffer read.
-vim.o.undofile = true;
-vim.opt.undodir = (os.getenv('HOME') or os.getenv("USERPROFILE")) .. '/.nvim/undo';
+vim.o.undofile = true
+vim.opt.undodir = (os.getenv("HOME") or os.getenv("USERPROFILE")) .. "/.nvim/undo"
 
-vim.o.termguicolors = true;
+vim.o.termguicolors = true
 
 -- Expand tab to use spaces however Makefiles **require** tabs. Else they error
 -- out. Set it here if it isn't auto done with `filetype indent on`
@@ -100,3 +99,6 @@ vim.o.softtabstop = 2
 -- Number of spaces to use for each step of (auto)indent.  Used for
 -- |'cindent'|, |>>|, |<<|, etc.
 vim.o.shiftwidth = 2
+
+-- Annoying waiting for the  completion if i already have a keymap i want to use.
+vim.opt.timeoutlen = 250

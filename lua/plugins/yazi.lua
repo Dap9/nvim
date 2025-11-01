@@ -15,6 +15,7 @@ local M = {
       desc = "Resume the last yazi session",
     },
   },
+  ---@module "yazi"
   ---@type YaziConfig | {}
   opts = {
     -- if you want to open yazi instead of netrw, see below for more info
