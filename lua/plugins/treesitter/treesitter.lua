@@ -48,7 +48,7 @@ local M = {
       "dockerfile",
       "sql",
       "starlark",
-      "verilog",
+      "systemverilog",
       "objdump",
       "asm",
       "arduino",
