@@ -40,6 +40,7 @@ local M = {
       },
     },
   },
+  lazygit = { enabled = false },
   keys = {
     -- Top Pickers & Explorer
     {

@@ -1,5 +1,8 @@
 local M = {
   "folke/todo-comments.nvim",
+  dependencies = {
+    "folke/snacks.nvim",
+  },
   keys = {
     {
       "<leader>st",
@@ -16,6 +19,7 @@ local M = {
       desc = "Todo/Fix/Fixme",
     },
   },
+  opts = {},
 }
 
 return M

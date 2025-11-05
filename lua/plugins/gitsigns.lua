@@ -2,9 +2,11 @@
 
 local M = {
   "lewis6991/gitsigns.nvim",
-  -- TODO: do a check to see if it's a git repo & disable if not?
-  -- local result = os.execute("git rev-parse --is-inside-worktree > /dev/null 2>&1")
-  -- return result == 0
+  -- TODO: Will this work on windows? Not sure
+  enabled = function()
+    local result = os.execute("git rev-parse --is-inside-worktree > /dev/null 2>&1")
+    return result == 0
+  end,
   event = {
     "BufReadPost",
     "BufNewFile",
