@@ -20,6 +20,7 @@
   "nvim-colorizer.lua": { "branch": "master", "commit": "81e676d3203c9eb6e4c0ccf1eba1679296ef923f" },
   "nvim-lspconfig": { "branch": "master", "commit": "2010fc6ec03e2da552b4886fceb2f7bc0fc2e9c0" },
   "nvim-treesitter": { "branch": "main", "commit": "896e92a7f63c31d3d8f1df402b9824add8886a58" },
+  "nvim-treesitter-textobjects": { "branch": "main", "commit": "2e5b8735a61d3cfaa65d9a8ff787a7b0a0a81b70" },
   "nvim-web-devicons": { "branch": "master", "commit": "8dcb311b0c92d460fac00eac706abd43d94d68af" },
   "oil.nvim": { "branch": "master", "commit": "7e1cd7703ff2924d7038476dcbc04b950203b902" },
   "oldworld.nvim": { "branch": "main", "commit": "d0af80cf6bd5d17789cd1214a8054fe1cf23fc22" },
@@ -36,5 +37,6 @@
   "tokyodark.nvim": { "branch": "master", "commit": "cc70a2fb809d5376f2bd8e5836f9bb3f5fb8ef43" },
   "tokyonight.nvim": { "branch": "main", "commit": "047ace2f6a15600c0784ba16f93b74767f5a5629" },
   "vim-mundo": { "branch": "master", "commit": "2ceda8c65f7b3f9066820729fc02003a09df91f9" },
+  "wildfire.nvim": { "branch": "master", "commit": "918a1873c2b8010baa034f373cf28c53ce4f038f" },
   "yazi.nvim": { "branch": "main", "commit": "3023aaf372f2367d9018071fbba9c700f4df86cd" }
 }

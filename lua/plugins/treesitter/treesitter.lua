@@ -1,3 +1,4 @@
+-- This entire config is **HEAVILY** taken from LazyVim. Almost all of it.
 local M = {
   "nvim-treesitter/nvim-treesitter",
   build = function()
@@ -69,15 +70,6 @@ local M = {
     folds = {
       enable = true,
     },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<A-t>",
-        node_incremental = "<A-t>",
-        scope_incremental = "<A-s>",
-        node_decremental = "<bs>",
-      },
-    },
   },
 
   ---@param opts plugins.treesitter.TSConfig
@@ -146,16 +138,15 @@ local M = {
         end
 
         -- indents
-        -- if enabled("indent", "indents") then
-        --   LazyVim.set_default("indentexpr", "v:lua.ts_utils.indentexpr()")
-        -- end
-        --
-        -- -- folds
-        -- if enabled("folds", "folds") then
-        --   if LazyVim.set_default("foldmethod", "expr") then
-        --     LazyVim.set_default("foldexpr", "v:lua.ts_utils.foldexpr()")
-        --   end
-        -- end
+        if enabled("indent", "indents") then
+          vim.api.nvim_set_option_value("indentexpr", "v:lua.ts_utils.indentexpr()", { scope = "local" })
+        end
+
+        -- folds
+        if enabled("folds", "folds") then
+          vim.api.nvim_set_option_value("foldmethod", "expr", { scope = "local" })
+          vim.api.nvim_set_option_value("foldexpr", "v:lua.ts_utils.foldexpr()", { scope = "local" })
+        end
       end,
     })
   end,

@@ -1,3 +1,4 @@
+-- This entire config is **HEAVILY** taken from LazyVim. Almost all of it.
 local M = {
   "nvim-treesitter/nvim-treesitter-textobjects",
   branch = "main",

@@ -1,3 +1,4 @@
+-- This entire config is **HEAVILY** taken from LazyVim. Almost all of it.
 ---@class plugins.treesitter.utils
 local M = {}
 
