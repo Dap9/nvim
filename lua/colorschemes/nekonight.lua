@@ -3,7 +3,7 @@ local name = "nekonight"
 local M = {
   "BrunoCiccarino/nekonight",
   name = name,
-  -- This is fucked, not sure why. `opts.style` seems to be coming as a boolean for some reason.
+  -- TODO: Tihs theme is fucked. Keeps thinking opts.style is a boolean for some reason.
   enabled = false,
   lazy = vim.g.colorscheme ~= name,
   priority = 1000,
@@ -17,8 +17,6 @@ local M = {
 }
 
 function M.setup_colors()
-  -- local colors = require("tokyodark").colors
-
   return vim.tbl_deep_extend("force", {}, {
     vimode_bg = "black",
   })

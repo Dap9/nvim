@@ -12,4 +12,10 @@ local M = {
   end,
 }
 
+function M.setup_colors()
+  return vim.tbl_deep_extend("force", {}, {
+    vimode_bg = "black",
+  })
+end
+
 return M
