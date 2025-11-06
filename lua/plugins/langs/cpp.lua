@@ -12,6 +12,24 @@ local M = {
       },
     },
   },
+  {
+    "stevearc/conform.nvim",
+    ---@module "conform"
+    ---@type conform.setupOpts
+    opts = {
+      formatters_by_ft = {
+        cpp = {
+          "clang-format",
+        },
+        c = {
+          "clang-format",
+        },
+        cuda = {
+          "clang-format",
+        },
+      },
+    },
+  },
 }
 
 return M
