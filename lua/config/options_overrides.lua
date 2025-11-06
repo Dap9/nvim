@@ -37,6 +37,92 @@ function M.parse_rustfmt_toml(path)
   return indent
 end
 
+--- Parse pyproject.toml and extract tab settings
+--- Supports:
+---   [tool.yapf]        -> indent_width
+---   [tool.autopep8]    -> indent-size
+---   [tool.ruff]        -> indent-width
+---   [tool.ruff.format] -> indent-width
+--- Black doesn't expose indent config, so we ignore [tool.black].
+---@param path string
+---@return number|nil indent_spaces
+function M.parse_pyproject_toml(path)
+  local indent = nil
+  local current_section = nil
+
+  for line in io.lines(path) do
+    -- section like [tool.ruff.format]
+    local section = line:match("^%s*%[([^%]]+)%]")
+    if section then
+      current_section = section
+    else
+      local key, value = line:match("^%s*([%w%-%_]+)%s*=%s*(.+)")
+      if key and value and current_section then
+        -- strip quotes
+        value = value:gsub('"', ""):gsub("'", "")
+        -- normalize key: indent-width -> indent_width
+        local norm_key = key:gsub("%-", "_")
+
+        -- Ruff can be in pyproject
+        -- [tool.ruff] or [tool.ruff.format] -> key: indent-width
+        if current_section == "tool.ruff" or current_section == "tool.ruff.format" then
+          if norm_key == "indent_width" then
+            indent = tonumber(value)
+          end
+        -- [tool.yapf]  -> key: indent_width
+        elseif current_section == "tool.yapf" then
+          if norm_key == "indent_width" then
+            indent = tonumber(value)
+          end
+
+        -- [tool.autopep8] -> key: indent-size
+        elseif current_section == "tool.autopep8" then
+          if norm_key == "indent_size" then
+            indent = tonumber(value)
+          end
+        end
+
+        -- note: [tool.black] has no indent option -> skip
+      end
+    end
+  end
+
+  return indent
+end
+
+--- Parse ruff.toml and extract tab settings
+--- Ruff formatter uses `indent-width`
+--- We accept both `indent-width` and `indent_width` for robustness.
+---@param path string
+---@return number|nil indent_spaces
+function M.parse_ruff_toml(path)
+  local indent = nil
+  local current_section = nil
+
+  for line in io.lines(path) do
+    local section = line:match("^%s*%[([^%]]+)%]")
+    if section then
+      current_section = section
+    else
+      local key, value = line:match("^%s*([%w%-%_]+)%s*=%s*(.+)")
+      if key and value and current_section then
+        value = value:gsub('"', ""):gsub("'", "")
+        local norm_key = key:gsub("%-", "_")
+
+        -- ruff.toml can have:
+        --   [format]
+        if current_section == "format" or current_section == "" then
+          if norm_key == "indent_width" then
+            indent = tonumber(value)
+          end
+        end
+      end
+    end
+  end
+
+  return indent
+end
+
 ---@param override_value number
 function M.override_tabwidth(override_value)
   --[[
