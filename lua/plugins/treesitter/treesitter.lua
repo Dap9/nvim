@@ -138,9 +138,10 @@ local M = {
         end
 
         -- indents
-        if enabled("indent", "indents") then
-          vim.api.nvim_set_option_value("indentexpr", "v:lua.ts_utils.indentexpr()", { scope = "local" })
-        end
+        -- TODO: These are currently fucked. Issue i found for this: https://github.com/nvim-treesitter/nvim-treesitter/issues/1136
+        -- if enabled("indent", "indents") then
+        --   vim.api.nvim_set_option_value("indentexpr", "v:lua.ts_utils.indentexpr()", { scope = "local" })
+        -- end
 
         -- folds
         if enabled("folds", "folds") then

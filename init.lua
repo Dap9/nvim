@@ -36,10 +36,5 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "VeryLazy",
   callback = function()
     require("config.autocmds")
-
-    -- Override some options that might be set by a plugin.
-    -- E.g. some lsps might set `softtabstop` and `shiftwidth`
-    -- This will ensure that doesn't happen
-    require("config.options_overrides")
-  end
+  end,
 })

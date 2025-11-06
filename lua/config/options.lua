@@ -25,6 +25,7 @@ vim.o.relativenumber = true
 -- Smart indenting
 vim.o.autoindent = true
 vim.o.smartindent = true
+vim.o.cindent = true
 
 -- Highlight the text line of the cursor with CursorLine
 vim.o.cursorline = true
