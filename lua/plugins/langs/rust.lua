@@ -23,10 +23,13 @@ local M = {
               rustfmt_path = project_dir .. "/.rustfmt.toml"
             end
 
-            if vim.fn.filereadable(rustfmt_path) == 1 then
-              local indent = option_overrides.parse_rustfmt_toml(rustfmt_path)
-              option_overrides.override_tabwidth(indent)
+            if vim.fn.filereadable(rustfmt_path) == 0 then
+              vim.notify("rustfmt.toml not found. Using default values", vim.log.levels.WARN)
+              return
             end
+
+            local indent = option_overrides.parse_rustfmt_toml(rustfmt_path)
+            option_overrides.override_tabwidth(indent)
           end,
         },
       },
