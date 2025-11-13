@@ -57,6 +57,7 @@ local M = {
       "make",
       "gdscript",
       "regex",
+      "nu",
     },
     ---@type plugins.treesitter.TSFeat
     highlight = {
