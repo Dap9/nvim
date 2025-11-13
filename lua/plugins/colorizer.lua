@@ -8,7 +8,13 @@ local M = {
     "ColorizerToggle",
   },
   main = "colorizer",
-  config = true,
+  opts = {
+    filetypes = {
+      hyprlang = {
+        rgb_fn = true,
+      },
+    },
+  },
 }
 
 return M
