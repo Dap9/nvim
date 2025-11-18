@@ -117,11 +117,18 @@ local M = {
     end
 
     vim.api.nvim_create_autocmd("FileType", {
-      group = vim.api.nvim_create_augroup("lazyvim_treesitter", { clear = true }),
+      group = vim.api.nvim_create_augroup("custom_treesitter", { clear = true }),
       callback = function(ev)
         local ft, lang = ev.match, vim.treesitter.language.get_lang(ev.match)
         if not ts_utils.have(ft) then
-          return
+          -- Install the parser! This is effectively auto install
+          -- vim.notify(string.format("Installing treesitter parser for `%s`", ft))
+          if not ts.install(ft, { summary = true }):wait(300000) then
+            vim.health.error(string.format("Failed to install parser for `%s`", ft))
+            return
+          end
+          -- Update the installed langs
+          ts_utils.get_installed(true)
         end
 
         ---@param feat string
