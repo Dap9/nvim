@@ -121,14 +121,19 @@ local M = {
       callback = function(ev)
         local ft, lang = ev.match, vim.treesitter.language.get_lang(ev.match)
 
-        -- Ignore the snacks buffer file types. It just causes a notifcation loop since the
-        -- ft of the notifcations matches this. And then it tries to install the parser for that,
-        -- causing another notifcation, which repeats the process.
-        if ft:match("snacks.*") then
-          return
-        end
-
         if not ts_utils.have(ft) then
+          -- Check if parser exists
+          local all_langs = ts.get_available()
+          local found = false
+          for _, v in ipairs(all_langs) do
+            if v == ft then
+              found = true
+              break
+            end
+          end
+          if not found then
+            return
+          end
           -- Install the parser! This is effectively auto install
           vim.notify(string.format("Installing treesitter parser for `%s`", ft))
           if not ts.install(ft, { summary = true }):wait(300000) then
