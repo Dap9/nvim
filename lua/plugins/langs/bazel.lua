@@ -24,7 +24,7 @@ local M = {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        bzl = {
+        starpls = {
           on_attach = require("plugins.lsp.config").on_attach(),
         },
       },
