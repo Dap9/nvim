@@ -3,10 +3,12 @@ local M = {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        basedpyright = {
+        ty = {
           on_attach = require("plugins.lsp.config").on_attach,
         },
         ruff = {
+          cmd = { "uv", "run", "ruff", "server" },
+          mason = false,
           on_attach = function(client, _)
             client.server_capabilities.hoverProvider = false
             local options_overrides = require("config.options_overrides")
@@ -50,14 +52,6 @@ local M = {
     },
   },
   {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "ruff",
-      },
-    },
-  },
-  {
     "stevearc/conform.nvim",
     ---@module "conform"
     ---@type conform.setupOpts
@@ -70,7 +64,18 @@ local M = {
         },
       },
       formatters = {
-        ruff = {},
+        ruff_fix = {
+          command = "uv",
+          prepend_args = { "run", "--no-sync", "ruff" },
+        },
+        ruff_format = {
+          command = "uv",
+          prepend_args = { "run", "--no-sync", "ruff" },
+        },
+        ruff_organize_imports = {
+          command = "uv",
+          prepend_args = { "run", "--no-sync", "ruff" },
+        },
       },
     },
   },

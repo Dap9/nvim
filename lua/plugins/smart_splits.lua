@@ -25,6 +25,7 @@ local M = {
         end,
       },
     },
+    at_edge = "stop",
   },
 
   config = function(_, opts)

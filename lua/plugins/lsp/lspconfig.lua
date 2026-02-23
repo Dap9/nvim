@@ -28,9 +28,9 @@ local M = {
       update_in_insert = true,
       -- severity_sort = {},
     },
-    inlay_hints = {
-      enabled = true,
-    },
+    -- inlay_hints = {
+    --   enabled = true,
+    -- },
     -- Codelens allows displays of contextual info. E.g. show number of references,
     -- run a test in the source code
     codelens = {
@@ -61,7 +61,9 @@ local M = {
 
   config = vim.schedule_wrap(function(_, opts)
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
-    vim.lsp.inlay_hint.enable(opts.inlay_hints.enabled)
+    if opts.inlay_hints then
+      vim.lsp.inlay_hint.enable(opts.inlay_hints.enabled)
+    end
 
     local mason_lspconfig = require("mason-lspconfig")
 
