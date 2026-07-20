@@ -5,11 +5,15 @@ local M = {
   },
   ---@module "triforce"
   ---@type TriforceConfig
-  opts = {
-    keymap = {
-      show_profile = "<leader>tp",
+  keys = {
+    {
+      "<leader>tp",
+      function()
+        require("triforce").show_profile()
+      end,
     },
   },
+  opts = {},
 }
 
 return M
